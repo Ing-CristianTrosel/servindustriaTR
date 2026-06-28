@@ -1,0 +1,35 @@
+.fondo{
+  background-color: rgba(0, 0, 0, 0.384); 
+}
+:root {
+    --bs-heading-font-family: 'Montserrat', sans-serif; 
+}
+.nav-link, .navbar-brand, a{
+    font-family: 'Open Sans', sans-serif;
+
+}
+.bg-dark-overlay {
+  background-color: rgba(0, 0, 0, 0.603); 
+  z-index: 1; 
+}
+.h2{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 70px;
+}
+.h3{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 40px;
+    padding-top: 20px;
+
+}
+.p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+.footer{
+    background-color: rgba(0, 0, 0, 0.719);    
+}
+.mensaje{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}

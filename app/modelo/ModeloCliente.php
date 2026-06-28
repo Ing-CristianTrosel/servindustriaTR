@@ -1,0 +1,93 @@
+<?php
+    namespace app\modelo;
+
+    require_once '../../autoload.php';
+    class ModeloCliente{
+        private object $base;
+
+        public function __construct()
+        {
+            $this->base = new ModeloBase();
+            session_start();
+        }
+
+        public function seleccionarCorreo(string $correo){
+            $sql = "SELECT * FROM `usuario` WHERE `correo` = :correo";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':correo' => $correo,
+            ]);
+            return $filas = $consulta->rowCount();
+        }
+
+        public function obtenerContraseña(string $correo){
+            $sql = "SELECT * FROM `usuario` WHERE `correo` = :correo";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':correo' => $correo,
+            ]);
+            return $consulta->fetch(\PDO::FETCH_ASSOC);
+        }
+
+        public function insertarUsuario(string $correo,string $contraseña){
+            $sql = "INSERT INTO `usuario` (`correo`,`contraseña`) values (:correo,:clave)";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':correo' => $correo,
+                ':clave' => $contraseña
+            ]);
+            $this->buscarIdPerfil($correo);
+            $_SESSION['correo'] = $correo;
+        }
+
+        public function buscarIdPerfil(string $correo){
+            $sql = "SELECT id FROM `usuario` WHERE `correo` = :correo";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':correo' => $correo
+            ]);
+            return $valor = $consulta->fetch(\PDO::FETCH_ASSOC);
+
+        }
+
+        public function perfilRepetido(string $correo){
+            $id_usuario = $this->buscarIdPerfil($correo);
+            $sql = "SELECT `id_usuario` FROM `perfil` WHERE `id_usuario` = :id_usuario";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_usuario' => $id_usuario['id'],
+            ]);
+            return $filas = $consulta->rowCount();
+        }
+
+
+        public function insertarPerfilUsuario(string $nombre_1,string $nombre_2,string $apellido_1,string $apellido_2){
+            $id_usuario = $this->buscarIdPerfil($_SESSION['correo']);
+            $sql = "INSERT INTO `perfil` (nombre_1,nombre_2,apellido_1,apellido_2,id_rol,id_usuario) values (:nombre_1,:nombre_2,:apellido_1,:apellido_2,1,:id_usuario)";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':nombre_1' =>$nombre_1,
+                ':nombre_2' =>$nombre_2,
+                ':apellido_1' =>$apellido_1,
+                ':apellido_2' =>$apellido_2,
+                ':id_usuario' => $id_usuario['id']
+            ]);
+        }
+
+        public function insertarDireccionUsuario(int $id_municipio,string $parroquia,string $comunidad,string $calle, string $vivienda){
+            $id_usuario = $this->buscarIdPerfil($_SESSION['correo']);
+            $sql = "INSERT INTO `direccion`(`id_municipio`,`parroquia`,`comunidad`,`calle`,`vivienda`,`id_perfil`) values (:id_municipio,:parroquia,:comunidad,:calle,:vivienda,:id_perfil)";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->excute([
+                ':id_municipio' => $id_municipio,
+                ':parroquia' => $parroquia,
+                ':comunidad' => $comunidad,
+                ':calle' => $calle,
+                'vivienda' => $vivienda,
+                'id_perfil' => $id_usuario
+            ]);
+        }
+
+    }
+
+?>
