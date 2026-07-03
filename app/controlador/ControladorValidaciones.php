@@ -4,7 +4,6 @@
     use app\modelo\ModeloCliente;
     use app\controlador\ControladorSanetizacion;
 
-    require_once '../../autoload.php';
     class ControladorValidaciones{
         private object $modeloCliente;
         private object $sanetizacion;
@@ -13,6 +12,9 @@
         {
             $this->modeloCliente = new ModeloCliente;
             $this->sanetizacion = new ControladorSanetizacion;
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
         }
         
         //Micro-funciones
@@ -47,13 +49,15 @@
 
         
         //Macro-funciones
-        public function validarRegistrarUsuario(string $correo,string $contraseña){
+        public function validarRegistroUsuario(string $correo,string $contraseña){
             if ($this->validarCorreoRepetido($correo) != true) {
+                echo "correo ya existente";
             }else{
                 $correo = $this->sanetizacion->sanetizacionCorreoUsuario($correo);
                 if ($this->validarLongitudClave($contraseña)) {
                     $clave = password_hash($contraseña,PASSWORD_DEFAULT);
                     $this->modeloCliente->insertarUsuario($correo,$clave);
+                    return true;
                 }
             }
 
@@ -64,12 +68,14 @@
             if ($this->validarIdUsuarioRepetido($_SESSION['correo']) != true && $this->validarCorreoRepetido($_SESSION['correo'] != true)) {
             }else{
             $this->modeloCliente->insertarPerfilUsuario($perfil['nombre'],$perfil['nombre2'],$perfil['apellido'],$perfil['apellido2']);
+            return true;
             }
         }
 
         public function validarAccesoUsuario(string $correo,string $contraseña){
             $clave = $this->modeloCliente->obtenerContraseña($correo);
             if (password_verify($contraseña,$clave['Contraseña'])) {
+                $this->modeloCliente->obtenerIdRol($correo);
                 return true;
             }else{
                 return false;
@@ -81,4 +87,3 @@
         }
 
     }
-$validaciones = new ControladorValidaciones();

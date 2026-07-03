@@ -1,14 +1,15 @@
 <?php
     namespace app\modelo;
 
-    require_once '../../autoload.php';
     class ModeloCliente{
         private object $base;
 
         public function __construct()
         {
             $this->base = new ModeloBase();
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
         }
 
         public function seleccionarCorreo(string $correo){
@@ -27,6 +28,19 @@
                 ':correo' => $correo,
             ]);
             return $consulta->fetch(\PDO::FETCH_ASSOC);
+        }
+
+        public function obtenerIdRol(string $correo){
+            $id_perfil = $this->buscarIdPerfil($correo);
+            $sql = "SELECT `id_rol` FROM `perfil` WHERE `id_usuario` = :id_usuario";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_usuario' => $id_perfil['id']
+            ]);
+            $id_rol = $consulta->fetch(\PDO::FETCH_ASSOC);
+            if ($id_rol != false) {
+                $_SESSION['id_rol']= $id_rol['id_rol'];
+            }
         }
 
         public function insertarUsuario(string $correo,string $contraseña){
