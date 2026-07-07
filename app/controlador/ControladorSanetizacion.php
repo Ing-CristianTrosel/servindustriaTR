@@ -22,4 +22,20 @@
         ];
         return $perfil;
         }
+
+        public function sanetizacionDireccion(string $parroquia,string $comunidad,string $calle,string $vivienda){
+            $parroquia = ucwords(strtolower(trim($parroquia)));
+            $comunidad = ucwords(strtolower(trim($comunidad)));
+            $calle = ucwords(strtolower(trim($calle)));
+            $vivienda = ucwords(strtolower(trim($vivienda)));
+
+            $direccion = [
+                'parroquia' =>$parroquia,
+                'comunidad'=> $comunidad,
+                'calle'=> $calle,
+                'vivienda'=> $vivienda
+            ];
+
+            return $direccion;
+        }
     }

@@ -47,6 +47,16 @@
             }
         }
 
+        public function validarDireccionRepetida(string $parroquia,string $comunidad,string $calle,string $vivienda){
+            $id_perfil = $this->modeloCliente->buscarIdUsuario($_SESSION['correo']);
+            $direccion = $this->modeloCliente->seleccionarDireccion($parroquia,$comunidad,$calle,$vivienda,$id_perfil);
+            if($direccion != 0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
         
         //Macro-funciones
         public function validarRegistroUsuario(string $correo,string $contraseña){
@@ -66,6 +76,7 @@
         public function validarRegistroPerfil(string $nombre1,string $nombre2,string $apellido1,string $apellido2){
             $perfil = $this->sanetizacion->sanetizacionNombresPerfil($nombre1,$nombre2,$apellido1,$apellido2);
             if ($this->validarIdUsuarioRepetido($_SESSION['correo']) != true && $this->validarCorreoRepetido($_SESSION['correo'] != true)) {
+                return false;
             }else{
             $this->modeloCliente->insertarPerfilUsuario($perfil['nombre'],$perfil['nombre2'],$perfil['apellido'],$perfil['apellido2']);
             return true;
@@ -82,8 +93,14 @@
             }
         }
 
-        public function validarRegistroDireccion(){
-            
+        public function validarRegistroDireccion(int $municipio, string $parroquia,string $comunidad,string $calle,string $vivienda){
+            $direccion = $this->sanetizacion->sanetizacionDireccion($parroquia,$comunidad,$calle,$vivienda);
+            if ($this->validarDireccionRepetida($parroquia,$comunidad,$calle,$vivienda) != true) {
+                echo "Direccion ya registrada";
+            }else{
+                $this->modeloCliente->insertarDireccionUsuario($municipio,$parroquia,$comunidad,$calle,$vivienda);
+            }
         }
 
     }
+    $validaciones = new ControladorValidaciones();

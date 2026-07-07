@@ -29,23 +29,23 @@
             }else{
                 switch($_SESSION['id_rol']){
                     case '1': 
-                        header("Location: cliente");
+                        header("Location: cliente/inicio");
                         exit();
                     break;
                     case '2': 
-                        header("Location: empleado");
+                        header("Location: empleado/inicio");
                         exit();
                     break;
                     case '3': 
-                        header("Location: coordinador");
+                        header("Location: coordinador/inicio");
                         exit();
                     break;
                     case '4': 
-                        header("Location: jefe");
+                        header("Location: jefe/inicio");
                         exit();
                     break;
                     case '5': 
-                        header("Location: administrador");
+                        header("Location: administrador/inicio");
                         exit();
                     break;
                 }

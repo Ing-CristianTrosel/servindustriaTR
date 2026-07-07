@@ -1,1 +1,265 @@
-vista cliente
+﻿<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Servindustria TR - Cliente</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../publico/css/inicio_cliente.css">
+		<style>
+
+		</style>
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+			<div class="container-fluid">
+				<a class="navbar-brand nav-brand" href="#">
+					<span class="brand-logo" aria-hidden="true">
+						<img class="action-image" src="../publico/img/logo.png" alt="">
+					</span>
+					<span class="brand-text fw-bold">Servindustria TR</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegación">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mainNav">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="inicio">Inicio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Trabajos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Pagos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Perfil</a>
+						</li>
+						<li class="nav'item">
+							<a class="nav-link" href="">
+								<span class="action-carrito">
+								<img class="action-image" src="../publico/img/carrito_blanco.png" alt="">
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<main class="container mt-4">
+			<section class="stats-panel">
+				<div class="avatar-wrap">
+					<div class="avatar">
+						<!-- SVG user icon -->
+						<img class="action-image" src="../publico/img/usuario.png" alt="">
+					</div>
+					<div>
+						<div class="welcome-text">Bienvenido</div>
+						<div class="welcome-name">Pepe</div>
+					</div>
+				</div>
+				<div class="stats-list">
+					<div class="stat-card">
+						<div class="stat-number">500$</div>
+						<div class="stat-label">Monto Pagados</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">10,500$</div>
+						<div class="stat-label">Monto Faltante</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">25</div>
+						<div class="stat-label">Trabajos Completados</div>
+					</div>
+				</div>
+			</section>
+		
+			<section class="action-grid">
+				<a href="#" class="action-card">
+					<div class="action-icon">
+						<img src="../publico/img/papeleo.png" alt="Papeleo" class="action-image">
+					</div>
+					<div class="action-label">Solicitar Servicio</div>
+				</a>
+				<a href="#" class="action-card">
+					<div class="action-icon">
+						<!-- Coin / pagos icon -->
+						<img class="action-image" src="../publico/img/dinero_negro.png" alt="">
+					</div>
+					<div class="action-label">Ver pagos</div>
+				</a>
+				<a href="#" class="action-card">
+					<div class="action-icon">
+						<!-- List icon -->
+						<img class="action-image" src="../publico/img/lista_negro.png" alt="">
+					</div>
+					<div class="action-label">Ver Solicitudes</div>
+				</a>
+				<a href="#" class="action-card">
+					<div class="action-icon">
+						<!-- Tool / trabajos icon -->
+						<img src="../publico/img/plano_negro.png" alt="" class="action-image">
+					</div>
+					<div class="action-label">Ver Trabajos</div>
+				</a>
+			</section>
+            <div class="content-card mt-4">
+					<div class="card-header px-4 py-3">
+						<h2>Tienda</h2>
+					</div>
+					<div class="table-wrapper">
+						<div class="table-responsive">
+							<table class="table align-middle mb-0">
+								<thead>
+									<tr>
+										<th>Producto</th>
+										<th>Precio</th>
+										<th>Área</th>
+										<th>Cantidad</th>
+										<th>Foto</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="clickable-row" tabindex="0" role="button"
+										data-product="Tomacorrientes 2x4"
+										data-price="5"
+										data-area="Electricidad"
+										data-quantity="25">
+										<td>Tomacorrientes 2x4</td>
+										<td>$5</td>
+										<td>Electricidad</td>
+										<td>25</td>
+										<td>Foto</td>
+									</tr>
+									<tr class="clickable-row" tabindex="0" role="button"
+										data-product="Interruptores 2x3"
+										data-price="5"
+										data-area="Electricidad"
+										data-quantity="25">
+										<td>Interruptores 2x3</td>
+										<td>$5</td>
+										<td>Electricidad</td>
+										<td>25</td>
+										<td>Foto</td>
+									</tr>
+									<tr class="clickable-row" tabindex="0" role="button"
+										data-product="Rollo de Cable calibre 14 TWS de 50mts color Negro"
+										data-price="25"
+										data-area="Electricidad"
+										data-quantity="5">
+										<td>Cable de cobre calibre 14 TWS color Negro</td>
+										<td>$25</td>
+										<td>Electricidad</td>
+										<td>5</td>
+										<td>Foto</td>
+									</tr>
+									<tr class="clickable-row" tabindex="0" role="button"
+										data-product="Tomacorrientes 2x4"
+										data-price="5"
+										data-area="Electricidad"
+										data-quantity="25">
+										<td>Tomacorrientes 2x4</td>
+										<td>$5</td>
+										<td>Electricidad</td>
+										<td>25</td>
+										<td>Foto</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+		</main>
+
+		<div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalCompraLabel">Formulario de compra</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+					</div>
+					<div class="modal-body">
+						<form id="formCompra">
+							<div class="mb-3">
+								<label class="form-label">Producto</label>
+								<label type="text" class="form-control" id="productoCompra" readonly></label>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Precio unitario</label>
+								<label type="text" class="form-control" id="precioCompra" readonly></label>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Área</label>
+								<label type="text" class="form-control" id="areaCompra" readonly></label>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Cantidad</label>
+								<input type="number" class="form-control" id="cantidadCompra" min="1" value="1">
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Total</label>
+								<label type="text" class="form-control" id="totalCompra" readonly></label>
+							</div>
+							
+							<button type="submit" class="btn btn-warning w-100">Agregar al carrito</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const rows = document.querySelectorAll('.clickable-row');
+				const productoInput = document.getElementById('productoCompra');
+				const precioInput = document.getElementById('precioCompra');
+				const areaInput = document.getElementById('areaCompra');
+				const cantidadInput = document.getElementById('cantidadCompra');
+				const totalInput = document.getElementById('totalCompra');
+				const form = document.getElementById('formCompra');
+				let selectedPrice = 0;
+
+				function updateTotal() {
+					const cantidad = parseInt(cantidadInput.value, 10) || 1;
+					totalInput.textContent = '$' + (selectedPrice * cantidad).toFixed(2);
+				}
+
+				function fillModal(row) {
+					selectedPrice = parseFloat(row.dataset.price || 0);
+					productoInput.textContent = row.dataset.product || '';
+					precioInput.textContent = '$' + selectedPrice.toFixed(2);
+					areaInput.textContent = row.dataset.area || '';
+					cantidadInput.value = row.dataset.quantity = '1';
+					updateTotal();
+				}
+
+				cantidadInput.addEventListener('input', updateTotal);
+
+				rows.forEach(function (row) {
+					row.addEventListener('click', function () {
+						fillModal(row);
+						new bootstrap.Modal(document.getElementById('modalCompra')).show();
+					});
+
+					row.addEventListener('keydown', function (event) {
+						if (event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault();
+							fillModal(row);
+							new bootstrap.Modal(document.getElementById('modalCompra')).show();
+						}
+					});
+				});
+
+				form.addEventListener('submit', function (event) {
+					event.preventDefault();
+					alert('Añadido al carrito.');
+					bootstrap.Modal.getInstance(document.getElementById('modalCompra')).hide();
+				});
+			});
+		</script>
+	</body>
+</html>

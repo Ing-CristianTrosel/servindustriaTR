@@ -44,4 +44,25 @@
         }
     }
 
+    public function RegistroDireccion(){
+        require_once 'app/vistas/usuario/registroDireccion.php';
+    }
+
+    public function ClienteInicio(){
+        require_once 'app/vistas/cliente/inicio.html';
+    }
+    public function EmpleadoInicio(){
+        require_once 'app/vistas/empleado/inicio.html';
+    }
+    public function CoordinadorInicio(){
+        require_once 'app/vistas/coordinador/inicio.html';
+    }
+    public function JefeInicio(){
+        require_once 'app/vistas/jefe/inicio.html';
+    }
+    public function AdministradorInicio(){
+        require_once 'app/vistas/administrador/inicio.html';
+        
+    }
+
 }

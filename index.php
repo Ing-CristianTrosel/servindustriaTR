@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once __DIR__.'/autoload.php';
 
 use app\enrutador\Router;
@@ -11,13 +12,12 @@ $router->agregar('/','ControladorVista','UsuarioInicio');
 $router->agregar('/registro','ControladorVista','UsuarioRegistro');
 $router->agregar('/acceder','ControladorVista','UsuarioIniciar_sesion');
 $router->agregar('/registro_perfil','ControladorVista','UsuarioRegistroPerfil');
-$router->agregar('/Cliente','ControladorVista','ClienteInicio');
-$router->agregar('/empleado','ControladorVista','EmpleadoInicio');
-$router->agregar('/coordinador','ControladorVista','CoordeinadorInicio');
-$router->agregar('/jefe','ControladorVista','JefeInicio');
-$router->agregar('/administrador','ControladorVista','AdministradorInicio');
-
-
-
+$router->agregar('/registro_direccion','ControladorVista','RegistroDireccion');
+$router->agregar('/cliente/inicio','ControladorVista','ClienteInicio');
+$router->agregar('/empleado/inicio','ControladorVista','EmpleadoInicio');
+$router->agregar('/coordinador/inicio','ControladorVista','CoordeinadorInicio');
+$router->agregar('/jefe/inicio','ControladorVista','JefeInicio');
+$router->agregar('/administrador/inicio','ControladorVista','AdministradorInicio');
 
 $router->dispatch($path);
+register_shutdown_function(function(){ if (ob_get_level()) ob_end_flush(); });
