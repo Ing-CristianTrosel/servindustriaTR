@@ -43,7 +43,8 @@
             $consulta->execute([
                 ':correo' => $correo,
             ]);
-            return $consulta->fetch(\PDO::FETCH_ASSOC);
+             return $consulta->fetch(\PDO::FETCH_ASSOC);
+            
         }
 
         public function obtenerIdRol(string $correo){
@@ -85,11 +86,12 @@
             $sql = "SELECT id FROM `perfil` WHERE `id_usuario` = :id_usuario";
             $consulta = $this->base->conexion->prepare($sql);
             $consulta->execute([
-                ':id_usuario' => $id_usuario
+                ':id_usuario' => $id_usuario['id']
             ]);
             $id_perfil = $consulta->fetch(\PDO::FETCH_ASSOC);
             $_SESSION['id_perfil'] = $id_perfil['id'];
-            return $id_perfil;
+            $_SESSION['correo'] = $correo;
+            return $id_perfil['id'];
         }
 
         public function perfilRepetido(string $correo){
@@ -143,6 +145,50 @@
             return $filas = $consulta->rowCount();
         }
 
+        public function mostrarMontoPagado(int $id_perfil){
+            $sql = "SELECT SUM(ab.monto) AS total_pagado FROM abonos ab JOIN asignaciones a ON ab.id_asignacion = a.id JOIN perfil p ON a.id_cliente = p.id WHERE p.id = :id_perfil AND ab.deleted_at IS NULL AND a.deleted_at IS NULL AND p.deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_perfil' => $id_perfil
+            ]);
+            return $monto = $consulta->fetch(\PDO::FETCH_ASSOC);
+        }
+
+        public function mostrarMontoFaltante(int $id_perfil){
+            $sql ="SELECT SUM(a.monto_total_servicio) AS total_contratado FROM asignaciones a JOIN perfil p ON a.id_cliente = p.id WHERE p.id = :id_perfil AND a.deleted_at IS NULL AND p.deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_perfil' => $id_perfil
+            ]);
+            return $montoFaltante = $consulta->fetch(\PDO::FETCH_ASSOC);
+        }
+
+        public function mostrarTrabajos(int $id_perfil){
+            $sql = "SELECT * FROM asignaciones WHERE id_cliente = :id_cliente AND deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_cliente' => $id_perfil
+            ]);
+            return $filas = $consulta->rowCount();
+        }
+
+        public function mostrarTrabajosFaltante(int $id_perfil){
+            $sql = "SELECT * FROM asignaciones WHERE id_cliente = :id_cliente AND fecha_finalizado IS NOT NULL AND deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_cliente' => $id_perfil
+            ]);
+            return $filas = $consulta->rowCount();
+        }
+
+        public function mostrarNombreUsuario(int $id){
+            $sql = "SELECT * FROM `perfil` WHERE `id` = :id";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id' => $id
+            ]);
+            return $nombre = $consulta->fetch(\PDO::FETCH_ASSOC);
+        }
     }
 
 ?>

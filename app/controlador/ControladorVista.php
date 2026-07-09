@@ -49,7 +49,10 @@
     }
 
     public function ClienteInicio(){
-        require_once 'app/vistas/cliente/inicio.html';
+        require_once 'app/vistas/cliente/inicio.php';
+    }
+    public function ClienteSalir(){
+        $this->usuario->salir();
     }
     public function EmpleadoInicio(){
         require_once 'app/vistas/empleado/inicio.html';

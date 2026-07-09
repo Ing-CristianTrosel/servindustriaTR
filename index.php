@@ -14,6 +14,7 @@ $router->agregar('/acceder','ControladorVista','UsuarioIniciar_sesion');
 $router->agregar('/registro_perfil','ControladorVista','UsuarioRegistroPerfil');
 $router->agregar('/registro_direccion','ControladorVista','RegistroDireccion');
 $router->agregar('/cliente/inicio','ControladorVista','ClienteInicio');
+$router->agregar('/cliente/salir','ControladorVista','ClienteSalir');
 $router->agregar('/empleado/inicio','ControladorVista','EmpleadoInicio');
 $router->agregar('/coordinador/inicio','ControladorVista','CoordeinadorInicio');
 $router->agregar('/jefe/inicio','ControladorVista','JefeInicio');

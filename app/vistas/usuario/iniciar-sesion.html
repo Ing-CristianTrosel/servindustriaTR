@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servindustria TR</title>
+  <link rel="icon" type="image/png" href="publico/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="publico/css/acceder.css">
 </head>
 <body>
+  <section class="hero-gallery" aria-label="Imágenes de fondo">
+    <img src="publico/img/cocina.jpg" alt="" class="hero-item">
+    <img src="publico/img/imagen-fondo.jpg" alt="" class="hero-item">
+    <img src="publico/img/decoracion.jpg" alt="" class="hero-item">
+  </section>
+  <main class="card">
+    <div class="card-header">
+      <div class="eyebrow">Acceso</div>
+    </div>
     <form action="acceder" method="post">
-        <input type="email" name="correo" id="">
-        <input type="password" name="contraseña" id="">
-        <button type="submit">acceder</button>
+      <div class="form-group">
+        <label class="form-label" for="email">Correo electronico</label>
+        <input id="email" class="input" type="email" name="correo" placeholder="ejemplo@correo.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="password">Contraseña</label>
+        <input id="password" class="input" type="password" name="contraseña" placeholder="Ingresa tu contraseña" minlength="8" required>
+        <div class="helper-text">8 caracteres minimos</div>
+      </div>
+      <button class="submit-btn" type="submit">Acceder</button>
     </form>
+    <p class="footer-text">No tienes cuenta? <a href="registro">Registrate</a></p>
+  </main>
 </body>
 </html>

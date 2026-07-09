@@ -85,11 +85,14 @@
 
         public function validarAccesoUsuario(string $correo,string $contraseña){
             $clave = $this->modeloCliente->obtenerContraseña($correo);
-            if (password_verify($contraseña,$clave['Contraseña'])) {
+            if ($clave != false) {
+                if (password_verify($contraseña,$clave['Contraseña'])) {
                 $this->modeloCliente->obtenerIdRol($correo);
+                $this->modeloCliente->buscarIdPerfil($correo);
                 return true;
-            }else{
-                return false;
+                }else{
+                    return false;
+                }
             }
         }
 
@@ -102,5 +105,51 @@
             }
         }
 
+        public function validarMontoPagado(int $id_perfil){
+            $monto = $this->modeloCliente->mostrarMontoPagado($id_perfil);
+            if ($monto != true) {
+                return $monto['total_pagado']; 
+            }else{
+                return $monto = 0;
+            }
+        }
+
+        public function validarMontoFaltante(int $id_perfil){
+            $monto = $this->modeloCliente->mostrarMontoFaltante($id_perfil);
+            if ($monto != true) {
+                return $monto['total_contratado']; 
+            }else{
+                return $monto = 0;
+            }
+        }
+
+        public function validarMontoResultado(){
+            $montoToltal = $this->validarMontoPagado($_SESSION['id_perfil']);
+            $montoFaltante = $this->validarMontoFaltante($_SESSION['id_perfil']);
+            $resultado = $montoFaltante - $montoToltal;
+            return $resultado;
+        }
+
+        public function validarMostrarTrabajos(){
+            $mostrar = $this->modeloCliente->mostrarTrabajos($_SESSION['id_perfil']);
+            if ($mostrar != true) {
+                return $mostrar; 
+            }else{
+                return $mostrar = 0;
+            }
+        }
+
+        public function validarMostrarTrabajosFaltante(){
+            $mostrar = $this->modeloCliente->mostrarTrabajosFaltante($_SESSION['id_perfil']);
+            if ($mostrar != true) {
+                return $mostrar; 
+            }else{
+                return $mostrar = 0;
+            }
+        }
+
+        public function validarMostrarNombre(int $id){
+            $nombre = $this->modeloCliente->mostrarNombreUsuario($id);
+            return $nombre = $nombre['nombre_1']." ".$nombre['apellido_1'];
+        }
     }
-    $validaciones = new ControladorValidaciones();

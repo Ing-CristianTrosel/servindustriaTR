@@ -25,7 +25,7 @@
 
     public function accederUsuario(string $correo,string $contraseña){
         if($this->validaciones->validarAccesoUsuario($correo,$contraseña) != true){
-                echo 'error';
+                
             }else{
                 switch($_SESSION['id_rol']){
                     case '1': 
@@ -60,5 +60,11 @@
                 header("Location: acceder");
                 exit();
             }
+    }
+
+    public function salir(){
+        session_destroy();
+        header("Location: /servindustriaTR/");
+        exit;
     }
 }

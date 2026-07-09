@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿<?php require_once 'app/controlador/Controlador_cliente/ControladorCliente.php';?>
+<!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
@@ -37,13 +38,14 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#">Perfil</a>
 						</li>
-						<li class="nav'item">
+						<li class="nav-item">
 							<a class="nav-link" href="">
 								<span class="action-carrito">
-								<img class="action-image" src="../publico/img/carrito_blanco.png" alt="">
+									<img class="action-image" src="../publico/img/carrito_blanco.png" alt="">
 								</span>
 							</a>
 						</li>
+						<a class="btn btn-salir" href="salir">Salir</a>
 					</ul>
 				</div>
 			</div>
@@ -58,31 +60,35 @@
 					</div>
 					<div>
 						<div class="welcome-text">Bienvenido</div>
-						<div class="welcome-name">Pepe</div>
+						<div class="welcome-name"><?php $cliente->nombre();?></div>
 					</div>
 				</div>
 				<div class="stats-list">
 					<div class="stat-card">
-						<div class="stat-number">500$</div>
+						<div class="stat-number">$<?php echo $cliente->montoTotal;?></div>
 						<div class="stat-label">Monto Pagados</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number">10,500$</div>
+						<div class="stat-number">$<?php echo $cliente->montoFaltante;?></div>
 						<div class="stat-label">Monto Faltante</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number">25</div>
+						<div class="stat-number"><?php echo $cliente->trabajosTotales;?></div>
+						<div class="stat-label">Trabajos Completados</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number"><?php echo $cliente->trabajosFaltantes;?></div>
 						<div class="stat-label">Trabajos Completados</div>
 					</div>
 				</div>
 			</section>
 		
 			<section class="action-grid">
-				<a href="#" class="action-card">
+				<a href="" class="action-card" id="open-form-btn">
 					<div class="action-icon">
 						<img src="../publico/img/papeleo.png" alt="Papeleo" class="action-image">
 					</div>
-					<div class="action-label">Solicitar Servicio</div>
+					<div class="action-label" >Solicitar Servicio</div>
 				</a>
 				<a href="#" class="action-card">
 					<div class="action-icon">
@@ -211,55 +217,54 @@
 			</div>
 		</div>
 
+		<div class="form-overlay" id="service-form-overlay">
+        <div class="form-container">
+            <button class="close-form" id="close-form-btn">&times;</button>
+            
+            <h1>Solicitar Servicio</h1>
+
+            <form action="inicio" method="post" id="actual-service-form">
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <select class="form-select" id="direccion" name="direccion" required>
+                        <?php $cliente->MostrarOpcionesDireccion();?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_servicio">Tipo de Servicio</label>
+                    <select class="form-select" id="tipo_servicio" name="tipo_servicio" required>
+                        <option value="electricidad" selected>Electricidad</option>
+                        <option value="fontaneria">Fontanería</option>
+                        <option value="reparacion">Reparación General</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_area">Tipo de Area</label>
+                    <select class="form-select" id="tipo_area" name="tipo_area" required>
+                        <option value="montaje_alumbrado" selected>Montaje de Alumbrado</option>
+                        <option value="instalacion_puntos">Instalación de Puntos</option>
+                        <option value="cableado">Cableado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha_visita">Fecha de visita</label>
+                    <input type="date" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripcion</label>
+                    <textarea class="form-textarea" id="descripcion" name="descripcion" required>Tengo poca luz en mi tienda, quiero cambiar alrededor de 25 lamparas</textarea>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const rows = document.querySelectorAll('.clickable-row');
-				const productoInput = document.getElementById('productoCompra');
-				const precioInput = document.getElementById('precioCompra');
-				const areaInput = document.getElementById('areaCompra');
-				const cantidadInput = document.getElementById('cantidadCompra');
-				const totalInput = document.getElementById('totalCompra');
-				const form = document.getElementById('formCompra');
-				let selectedPrice = 0;
-
-				function updateTotal() {
-					const cantidad = parseInt(cantidadInput.value, 10) || 1;
-					totalInput.textContent = '$' + (selectedPrice * cantidad).toFixed(2);
-				}
-
-				function fillModal(row) {
-					selectedPrice = parseFloat(row.dataset.price || 0);
-					productoInput.textContent = row.dataset.product || '';
-					precioInput.textContent = '$' + selectedPrice.toFixed(2);
-					areaInput.textContent = row.dataset.area || '';
-					cantidadInput.value = row.dataset.quantity = '1';
-					updateTotal();
-				}
-
-				cantidadInput.addEventListener('input', updateTotal);
-
-				rows.forEach(function (row) {
-					row.addEventListener('click', function () {
-						fillModal(row);
-						new bootstrap.Modal(document.getElementById('modalCompra')).show();
-					});
-
-					row.addEventListener('keydown', function (event) {
-						if (event.key === 'Enter' || event.key === ' ') {
-							event.preventDefault();
-							fillModal(row);
-							new bootstrap.Modal(document.getElementById('modalCompra')).show();
-						}
-					});
-				});
-
-				form.addEventListener('submit', function (event) {
-					event.preventDefault();
-					alert('Añadido al carrito.');
-					bootstrap.Modal.getInstance(document.getElementById('modalCompra')).hide();
-				});
-			});
-		</script>
+		<script src="../publico/js/inicio.js"></script>
 	</body>
 </html>
