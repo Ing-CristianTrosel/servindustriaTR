@@ -51,6 +51,9 @@
     public function ClienteInicio(){
         require_once 'app/vistas/cliente/inicio.php';
     }
+    public function ClienteSolicitudes(){
+        require_once 'app/vistas/cliente/solicitudes.php';
+    }
     public function ClienteSalir(){
         $this->usuario->salir();
     }

@@ -189,6 +189,15 @@
             ]);
             return $nombre = $consulta->fetch(\PDO::FETCH_ASSOC);
         }
+
+        public  function mostrarDireccionPerfil(int $id_perfil){
+            $sql = "SELECT CONCAT_WS(' / ', e.nombre_estado, m.nombre_municipio, d.parroquia, d.comunidad, d.calle, d.vivienda) AS ubicacion FROM perfil p INNER JOIN direccion d ON p.id = d.id_perfil INNER JOIN municipios m ON d.id_municipio = m.id INNER JOIN estados e ON m.id_estado = e.id WHERE p.deleted_at IS NULL AND d.deleted_at IS NULL AND p.id = :id_perfil;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_perfil' => $id_perfil
+            ]);
+            return $direccion = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
     }
 
 ?>

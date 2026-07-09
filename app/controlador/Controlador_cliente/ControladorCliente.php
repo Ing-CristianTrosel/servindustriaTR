@@ -34,18 +34,10 @@ use app\controlador\ControladorValidaciones;
     }
 
     public function MostrarOpcionesDireccion(){
-        $direcciones = [
-            'municipio' => 'valencia',
-            'parroquia' => 'miguel peña',
-            'comunidad' => 'negro primero',
-            'calle' => 'terepaima li',
-            'casa' => '105-03'
-        ];
-
+    $direcciones = $this->validaciones->validarMostrarDireccion($_SESSION['id_perfil']);
         foreach($direcciones as $direccion){
-            echo "<option value".$direccion.">".$direccion."</option>";
+            echo "<option value".$direccion.">".$direccion['ubicacion']."</option>";
         }
-
     }
 
     public function nombre(){

@@ -152,4 +152,16 @@
             $nombre = $this->modeloCliente->mostrarNombreUsuario($id);
             return $nombre = $nombre['nombre_1']." ".$nombre['apellido_1'];
         }
+
+        public  function validarMostrarDireccion(int $id_perfil){
+            $direccion = $this->modeloCliente->mostrarDireccionPerfil($id_perfil);
+            if ($direccion != false) {
+                return $direccion;
+            }else{
+                $direccion = 'sin direccion';
+                echo "<option value".$direccion.">".$direccion."</option>";
+
+            }
+        }
+
     }

@@ -59,6 +59,41 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar-menu');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const closeBtn = document.getElementById('sidebar-close');
+
+    if (toggleBtn && sidebar && backdrop) {
+        const openSidebar = function () {
+            sidebar.classList.add('active');
+            backdrop.classList.add('active');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeSidebar = function () {
+            sidebar.classList.remove('active');
+            backdrop.classList.remove('active');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        };
+
+        toggleBtn.addEventListener('click', openSidebar);
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeSidebar);
+        }
+        backdrop.addEventListener('click', closeSidebar);
+        sidebar.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeSidebar);
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && sidebar.classList.contains('active')) {
+                closeSidebar();
+            }
+        });
+    }
+
     const openFormBtn = document.getElementById('open-form-btn');
     const closeFormBtn = document.getElementById('close-form-btn');
     const formOverlay = document.getElementById('service-form-overlay');

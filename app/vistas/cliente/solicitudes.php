@@ -133,70 +133,51 @@
 			</section>
             <div class="content-card mt-4">
 					<div class="card-header px-4 py-3">
-						<h2>Tienda</h2>
+						<h2>Solicitudes</h2>
 					</div>
 					<div class="table-wrapper">
 						<div class="table-responsive">
 							<table class="table align-middle mb-0">
-								<thead>
+								<thead class="oscuro">
 									<tr>
-										<th>Producto</th>
-										<th>Precio</th>
-										<th>Área</th>
-										<th>Cantidad</th>
-										<th>Foto</th>
+										<th>Direccion</th>
+										<th>Servicio</th>
+										<th>Area</th>
+										<th>Visita</th>
+										<th>Estado</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Tomacorrientes 2x4"
-										data-price="5"
-										data-area="Electricidad"
-										data-quantity="25">
-										<td>Tomacorrientes 2x4</td>
-										<td>$5</td>
+									<tr>
+										<td>Valencia / Miguel Peña / Negro Primero / Terepaima li / 105-03</td>
 										<td>Electricidad</td>
-										<td>25</td>
-										<td>Foto</td>
+										<td>Montaje de alumbrado</td>
+										<td>04/07/2026</td>
+										<td>en espera</td>
+										<td><a class="action-link" href="#">Eliminar</a></td>
 									</tr>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Interruptores 2x3"
-										data-price="5"
-										data-area="Electricidad"
-										data-quantity="25">
-										<td>Interruptores 2x3</td>
-										<td>$5</td>
+									<tr>
+										<td>Valencia / Miguel Peña / Negro Primero / Terepaima li / 105-03</td>
+										<td>Plomería</td>
+										<td>Instalación de fregadero</td>
+										<td>04/07/2026</td>
+										<td>completado</td>
+										<td><a class="action-link" href="#">Eliminar</a></td>
+									</tr>
+									<tr>
+										<td>Valencia / Miguel Peña / Negro Primero / Terepaima li / 105-03</td>
 										<td>Electricidad</td>
-										<td>25</td>
-										<td>Foto</td>
-									</tr>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Rollo de Cable calibre 14 TWS de 50mts color Negro"
-										data-price="25"
-										data-area="Electricidad"
-										data-quantity="5">
-										<td>Cable de cobre calibre 14 TWS color Negro</td>
-										<td>$25</td>
-										<td>Electricidad</td>
-										<td>5</td>
-										<td>Foto</td>
-									</tr>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Tomacorrientes 2x4"
-										data-price="5"
-										data-area="Electricidad"
-										data-quantity="25">
-										<td>Tomacorrientes 2x4</td>
-										<td>$5</td>
-										<td>Electricidad</td>
-										<td>25</td>
-										<td>Foto</td>
-									</tr>
+										<td>Montaje de alumbrado</td>
+										<td>04/07/2026</td>
+										<td>en espera</td>
+										<td><a class="action-link" href="#">Eliminar</a></td>
+									</tr>								
 								</tbody>
-							</table>
-						</div>
+						</table>
 					</div>
 				</div>
+			</div>
 		</main>
 
 		<div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
