@@ -3,6 +3,7 @@
 
     use app\modelo\ModeloCliente;
     use app\controlador\ControladorSanetizacion;
+use DateTime;
 
     class ControladorValidaciones{
         private object $modeloCliente;
@@ -66,7 +67,8 @@
                 $correo = $this->sanetizacion->sanetizacionCorreoUsuario($correo);
                 if ($this->validarLongitudClave($contraseña)) {
                     $clave = password_hash($contraseña,PASSWORD_DEFAULT);
-                    $this->modeloCliente->insertarUsuario($correo,$clave);
+                    $_SESSION['correo'] = $correo;
+                    $_SESSION['contraseña'] = $clave;
                     return true;
                 }
             }
@@ -78,6 +80,7 @@
             if ($this->validarIdUsuarioRepetido($_SESSION['correo']) != true && $this->validarCorreoRepetido($_SESSION['correo'] != true)) {
                 return false;
             }else{
+            $this->modeloCliente->insertarUsuario($_SESSION['correo'],$_SESSION['contraseña']);
             $this->modeloCliente->insertarPerfilUsuario($perfil['nombre'],$perfil['nombre2'],$perfil['apellido'],$perfil['apellido2']);
             return true;
             }
@@ -153,6 +156,16 @@
             return $nombre = $nombre['nombre_1']." ".$nombre['apellido_1'];
         }
 
+        public function validarMostrarNombreCompleto(int $id){
+            $nombre = $this->modeloCliente->mostrarNombreUsuario($id);
+            return $nombre;
+        }
+
+        public function validarCambiarNombre(string $nombre1,string $nombre2,string $apellido1,string $apellido2, int $id_cliente){
+            $perfil = $this->sanetizacion->sanetizacionNombresPerfil($nombre1,$nombre2,$apellido1,$apellido2);
+            $this->modeloCliente->actualizarPerfil($perfil['nombre'],$perfil['nombre2'],$perfil['apellido'],$perfil['apellido2'],$id_cliente);
+        }
+
         public  function validarMostrarDireccion(int $id_perfil){
             $direccion = $this->modeloCliente->mostrarDireccionPerfil($id_perfil);
             if ($direccion != false) {
@@ -162,6 +175,20 @@
                 echo "<option value".$direccion.">".$direccion."</option>";
 
             }
+        }
+
+        public function validarIngresarSolicitud(int $id_cliente,string $direccion, string $servicio, string $area,string $fecha_visita, string $estado, string $descripcion){
+            $this->modeloCliente->ingresarSolicitud($id_cliente,$direccion,$servicio,$area,$fecha_visita,$estado,$descripcion);
+            header("location: inicio");
+            exit;
+        }
+
+        public function validarMostrarSolicitudes(int $id_perfil){
+            return $solicitudes = $this->modeloCliente->mostrarSolicitudes($id_perfil);
+        }
+
+        public function validarMostrarPagos(int $id_perfil){
+            return $solicitudes = $this->modeloCliente->mostrarPagos($id_perfil);
         }
 
     }

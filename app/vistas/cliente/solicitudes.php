@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="es">
 	<head>
+	    <link rel="icon" type="image/png" href="../publico/img/logo.png">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Servindustria TR - Cliente</title>
@@ -38,25 +39,25 @@
 					</span>
 					Inicio
 				</a>
-				<a class="sidebar-link sidebar-link-cart" href="#">
+				<a class="sidebar-link sidebar-link-cart" href="trabajos">
 					<span class="action-carrito">
 						<img class="action-image" src="../publico/img/plano_blanco.png" alt="">
 					</span>
 					Trabajos
 				</a>
-				<a class="sidebar-link sidebar-link-cart" href="#">
+				<a class="sidebar-link sidebar-link-cart" href="pagos">
 					<span class="action-carrito">
 						<img class="action-image" src="../publico/img/dinero_blanco.png" alt="">
 					</span>
 					Pagos
 				</a>
-				<a class="sidebar-link sidebar-link-cart" href="#">
+				<a class="sidebar-link sidebar-link-cart" href="perfil">
 					<span class="action-carrito">
 						<img class="action-image" src="../publico/img/perfil.png" alt="">
 					</span>
 					Perfil
 				</a>
-				<a class="sidebar-link sidebar-link-cart" href="#">
+				<a class="sidebar-link sidebar-link-cart" href="carrito">
 					<span class="action-carrito">
 						<img class="action-image" src="../publico/img/carrito_blanco.png" alt="">
 					</span>
@@ -109,7 +110,7 @@
 					</div>
 					<div class="action-label" >Solicitar Servicio</div>
 				</a>
-				<a href="#" class="action-card">
+				<a href="pagos" class="action-card">
 					<div class="action-icon">
 						<!-- Coin / pagos icon -->
 						<img class="action-image" src="../publico/img/dinero_negro.png" alt="">
@@ -123,7 +124,7 @@
 					</div>
 					<div class="action-label">Ver Solicitudes</div>
 				</a>
-				<a href="#" class="action-card">
+				<a href="trabajos" class="action-card">
 					<div class="action-icon">
 						<!-- Tool / trabajos icon -->
 						<img src="../publico/img/plano_negro.png" alt="" class="action-image">
@@ -149,30 +150,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Valencia / Miguel Peña / Negro Primero / Terepaima li / 105-03</td>
-										<td>Electricidad</td>
-										<td>Montaje de alumbrado</td>
-										<td>04/07/2026</td>
-										<td>en espera</td>
-										<td><a class="action-link" href="#">Eliminar</a></td>
-									</tr>
-									<tr>
-										<td>Valencia / Miguel Peña / Negro Primero / Terepaima li / 105-03</td>
-										<td>Plomería</td>
-										<td>Instalación de fregadero</td>
-										<td>04/07/2026</td>
-										<td>completado</td>
-										<td><a class="action-link" href="#">Eliminar</a></td>
-									</tr>
-									<tr>
-										<td>Valencia / Miguel Peña / Negro Primero / Terepaima li / 105-03</td>
-										<td>Electricidad</td>
-										<td>Montaje de alumbrado</td>
-										<td>04/07/2026</td>
-										<td>en espera</td>
-										<td><a class="action-link" href="#">Eliminar</a></td>
-									</tr>								
+									<?php $cliente->mostrarSolicitudes();?>								
 								</tbody>
 						</table>
 					</div>

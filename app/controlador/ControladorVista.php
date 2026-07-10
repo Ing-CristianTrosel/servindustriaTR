@@ -54,6 +54,15 @@
     public function ClienteSolicitudes(){
         require_once 'app/vistas/cliente/solicitudes.php';
     }
+    public function ClientePagos(){
+        require_once 'app/vistas/cliente/pagos.php';
+    }
+    public function ClienteTrabajos(){
+        require_once 'app/vistas/cliente/trabajos.php';
+    }
+    public function ClientePerfil(){
+        require_once 'app/vistas/cliente/perfil.php';
+    }
     public function ClienteSalir(){
         $this->usuario->salir();
     }

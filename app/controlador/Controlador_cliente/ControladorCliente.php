@@ -6,6 +6,12 @@ use app\controlador\ControladorValidaciones;
     public int $montoFaltante;
     public int $trabajosTotales;
     public int $trabajosFaltantes;
+    public string $primerNombre;
+    public string $segundoNombre;
+    public string $primerApellido;
+    public string $segundoApellido;
+    public bool $validarServicio = false;
+
 
     public function __construct(){
     $this->validaciones = new ControladorValidaciones;
@@ -24,12 +30,16 @@ use app\controlador\ControladorValidaciones;
     }
 
     public function solicitarServicio(){
-        if ($_POST) {
+        if ($this->validarServicio == true) {
+            if ($_POST) {
             $direccion = $_POST['direccion'];
-            $tipo_servicio = $_POST['tipo_servicio'];
-            $tipo_area = $_POST['tipo_area'];
+            $servicio = $_POST['tipo_servicio'];
+            $area = $_POST['tipo_area'];
             $fecha_visita = $_POST['fecha_visita'];
             $descripcion = $_POST['descripcion'];
+            $estado = 'pendiente';
+            $this->validaciones->validarIngresarSolicitud($_SESSION['id_perfil'],$direccion,$servicio,$area,$fecha_visita,$estado,$descripcion);
+        }
         }
     }
 
@@ -42,9 +52,62 @@ use app\controlador\ControladorValidaciones;
 
     public function nombre(){
         echo $nombre =$this->validaciones->validarMostrarNombre($_SESSION['id_perfil']);
+    }
+
+    public function nombreCompleto(){
+        if ($_POST) {
+            $nombre1 = $_POST['nombre1'];
+            $nombre2 = $_POST['nombre2'];
+            $apellido1 = $_POST['apellido1'];
+            $apellido2 = $_POST['apellido2'];
+            $this->validaciones->validarCambiarNombre($nombre1,$nombre2,$apellido1,$apellido2,$_SESSION['id_perfil']);
+        }
+        $nombre = $this->validaciones->validarMostrarNombreCompleto($_SESSION['id_perfil']);
+        $this->primerNombre = $nombre['nombre_1'];
+        $this->segundoNombre = $nombre['nombre_2'];
+        $this->primerApellido = $nombre['apellido_1'];
+        $this->segundoApellido = $nombre['apellido_2'];
         
     }
+
+    public function mostrarSolicitudes(){
+        $solicitudes = $this->validaciones->validarMostrarSolicitudes($_SESSION['id_perfil']);
+        foreach($solicitudes as $solicitud){
+            echo "
+                <tr>
+                    <td>".$solicitud['direccion']."</td>
+                    <td>".$solicitud['servicio']."</td>
+                    <td>".$solicitud['area']."</td>
+                    <td>".$solicitud['fecha_visita']."</td>
+                    <td>".$solicitud['estado']."</td>
+            ";
+            if($solicitud['estado'] != 'aprobado'){
+            echo "<td><a href="."Eliminar"." >Eliminar</a></td>";
+            }else{
+                echo "<td></td>";
+            }
+            echo "</tr>";
+        }
+    }
+
+    public function mostrarPagos(){
+        $pagos = $this->validaciones->validarMostrarPagos($_SESSION['id_perfil']);
+        foreach($pagos as $pago){
+            echo "
+                <tr>
+                    <td>".$pago['asignacion']."</td>
+                    <td>".$pago['monto']."</td>
+                    <td>".$pago['fecha_pago']."</td>
+                    <td>".$pago['referencia']."</td>
+                    <td>".$pago['metodo_pago']."</td>
+                </tr>
+            ";
+        }
+    }
+
+
 }
 $cliente = new ControladorCliente();
 $cliente->inicio();
 $cliente->solicitarServicio();
+$cliente->nombreCompleto();

@@ -1,6 +1,8 @@
 <?php
     namespace app\modelo;
 
+use DateTime;
+
     class ModeloCliente{
         private object $base;
 
@@ -197,6 +199,50 @@
                 ':id_perfil' => $id_perfil
             ]);
             return $direccion = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function ingresarSolicitud(int $id_cliente,string $direccion, string $servicio, string $area, string $fecha_visita, string $estado, string $descripcion){
+            $sql = "INSERT INTO `solicitudes` (`id_cliente`,`direccion`,`servicio`,`area`,`fecha_visita`,`estado`,`descripcion`) VALUES(:id_cliente,:direccion,:servicio,:area,:fecha_visita,:estado,:descripcion);";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_cliente' => $id_cliente,
+                ':direccion' => $direccion,
+                ':servicio' => $servicio,
+                ':area' => $area,
+                ':fecha_visita' => $fecha_visita,
+                ':estado' => $estado,
+                ':descripcion' => $descripcion
+            ]);
+        }
+
+        public function mostrarSolicitudes(int $id_cliente){
+            $sql = "SELECT `direccion`,`servicio`,`area`,`fecha_visita`,`estado` FROM `solicitudes` WHERE `id_cliente` = :id_cliente";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_cliente' => $id_cliente
+            ]);
+            return $nombre = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function mostrarPagos(int $id_cliente){
+            $sql = "SELECT asig.motivo AS asignacion, ab.monto, ab.fecha_pago, ab.referencia, ab.metodo_pago FROM abonos ab INNER JOIN asignaciones asig ON ab.id_asignacion = asig.id INNER JOIN perfil perf ON asig.id_cliente = perf.id WHERE perf.id = :id_cliente;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_cliente' => $id_cliente
+            ]);
+            return $nombre = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function actualizarPerfil(string $nombre1,string $nombre2,string $apellido1,string $apellido2, int $id_cliente){
+            $sql = "UPDATE `perfil` SET `nombre_1` = :nombre1, `nombre_2`= :nombre2, `apellido_1`= :apellido1 ,`apellido_2`= :apellido2 WHERE `id` = :id_cliente";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':nombre1' => $nombre1,
+                ':nombre2' => $nombre2,
+                ':apellido1' => $apellido1,
+                ':apellido2' => $apellido2,
+                ':id_cliente' => $id_cliente
+            ]);
         }
     }
 

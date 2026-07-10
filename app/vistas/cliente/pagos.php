@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="es">
 	<head>
-    	<link rel="icon" type="image/png" href="../publico/img/logo.png">
+	    <link rel="icon" type="image/png" href="../publico/img/logo.png">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Servindustria TR - Cliente</title>
@@ -11,13 +11,11 @@
 	</head>
 	<body>
 
-		<button class="hamburger-toggle" id="sidebar-toggle" type="button" 
-                data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-label="Abrir menú" aria-controls="navbarNav" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+		<button class="hamburger-toggle" id="sidebar-toggle" type="button" aria-label="Abrir menú" aria-controls="sidebar-menu" aria-expanded="false">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
 
 		<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
@@ -133,66 +131,28 @@
 			</section>
             <div class="content-card mt-4">
 					<div class="card-header px-4 py-3">
-						<h2>Tienda</h2>
+						<h2>Pagos</h2>
 					</div>
 					<div class="table-wrapper">
 						<div class="table-responsive">
 							<table class="table align-middle mb-0">
-								<thead>
+								<thead class="oscuro">
 									<tr>
-										<th>Producto</th>
-										<th>Precio</th>
-										<th>Área</th>
-										<th>Foto</th>
+										<th>Asignacion</th>
+										<th>Monto</th>
+										<th>Fecha</th>
+										<th>Referencia</th>
+										<th>Metodo</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Tomacorrientes 2x4"
-										data-price="5"
-										data-area="Electricidad"
-										data-quantity="25">
-										<td>Tomacorrientes 2x4</td>
-										<td>$5</td>
-										<td>Electricidad</td>
-										<td>Foto</td>
-									</tr>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Interruptores 2x3"
-										data-price="5"
-										data-area="Electricidad"
-										data-quantity="25">
-										<td>Interruptores 2x3</td>
-										<td>$5</td>
-										<td>Electricidad</td>
-										<td>Foto</td>
-									</tr>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Rollo de Cable calibre 14 TWS de 50mts color Negro"
-										data-price="25"
-										data-area="Electricidad"
-										data-quantity="5">
-										<td>Cable de cobre calibre 14 TWS color Negro</td>
-										<td>$25</td>
-										<td>Electricidad</td>
-										
-										<td>Foto</td>
-									</tr>
-									<tr class="clickable-row" tabindex="0" role="button"
-										data-product="Tomacorrientes 2x4"
-										data-price="5"
-										data-area="Electricidad"
-										data-quantity="25">
-										<td>Tomacorrientes 2x4</td>
-										<td>$5</td>
-										<td>Electricidad</td>
-										<td>Foto</td>
-									</tr>
+									<?php $cliente->mostrarPagos();?>								
 								</tbody>
 							</table>
 						</div>
 					</div>
-				</div>
+			</div>
 		</main>
 
 		<div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
@@ -232,14 +192,13 @@
 			</div>
 		</div>
 
-	<div class="form-overlay" id="service-form-overlay">
+		<div class="form-overlay" id="service-form-overlay">
         <div class="form-container">
             <button class="close-form" id="close-form-btn">&times;</button>
             
             <h1>Solicitar Servicio</h1>
 
             <form action="inicio" method="post" id="actual-service-form">
-				<?php $this->validarServicio = true?>
                 <div class="form-group">
                     <label for="direccion">Direccion</label>
                     <select class="form-select" id="direccion" name="direccion" required>
@@ -267,7 +226,7 @@
 
                 <div class="form-group">
                     <label for="fecha_visita">Fecha de visita</label>
-                    <input type="datetime-local" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                    <input type="date" class="form-control" id="fecha_visita" name="fecha_visita" required>
                 </div>
 
                 <div class="form-group">

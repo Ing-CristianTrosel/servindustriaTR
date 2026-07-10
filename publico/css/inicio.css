@@ -715,3 +715,47 @@ grid-template-columns: 1fr;
         font-size: 2.4rem;
       }
     }
+
+    /* Hace que el icono del menú hamburguesa sea blanco */
+/* Estilos base del botón hamburguesa personalizado */
+.hamburger-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1050;
+}
+
+/* Estilo para cada una de las 3 líneas (span) */
+.hamburger-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff; /* Color de las líneas */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ocultar el botón en pantallas grandes (Escritorio) */
+@media (min-width: 992px) {
+    .hamburger-toggle {
+        display: none;
+    }
+}
+
+/* --- ANIMACIÓN: Transformación en "X" al abrirse --- */
+.hamburger-toggle:not(.collapsed) span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-toggle:not(.collapsed) span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-toggle:not(.collapsed) span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}

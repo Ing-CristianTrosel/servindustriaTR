@@ -12,7 +12,7 @@
 <body>
   <section class="register-section">
     <div class="register-image">
-      <img src="publico/img/presentacion_registro.jpg" alt="Proyecto eléctrico profesional" loading="lazy">
+      <img class="hero-image" src="publico/img/registro.jpg" alt="Proyecto eléctrico profesional" loading="lazy">
     </div>
     <div class="form-pane">
       <div class="form-card">
@@ -27,7 +27,12 @@
             <input id="password" class="form-control" type="password" name="contraseña" placeholder="Ingresa tu contraseña" minlength="8" required>
             <div class="helper-text">8 caracteres mínimos</div>
           </div>
-          <button class="btn btn-register" type="submit">Siguiente</button>
+          <div class="d-inline-block text-center px-2">
+            <button class="btn btn-register d-flex align-items-center justify-content-center mb-3 px-5" type="submit">
+              Siguiente
+            </button>
+            <a class="link d-block" href="/servindustriaTR/">Volver</a>
+          </div>
         </form>
       </div>
     </div>
