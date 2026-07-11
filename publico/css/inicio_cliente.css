@@ -313,15 +313,23 @@ body {
 }
 
 .action-icon,
+.action-icon-min,
 .action-carrito {
 	display: inline-grid;
 	place-items: center;
 	margin-bottom: 10px;
 }
 
+
 .action-icon {
 	width: 48px;
 	height: 48px;
+	margin-bottom: 10px;
+}
+
+.action-icon-min {
+	width:25px;
+	height: 25px;
 }
 
 .action-carrito {
@@ -614,4 +622,43 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	border: none;
 	background: none;
 }
+.profile-title {
+	font-size: 1.5rem; 
+	border-bottom: 1px solid #ffcc59; 
+	padding-bottom: 8px;
+}
 
+/* Botón específico para registrar pagos */
+.btn-pagar-trabajo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 40px;
+	padding: 0 24px;
+	background-color: #ffffff; /* Azul de Bootstrap */
+	color: #000;
+	border: 1px solid #ffcc59;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 0.95rem;
+	transition: background-color 0.15s ease-in-out;
+}
+
+.btn-pagar-trabajo:hover {
+	background-color: #ffcc59;
+	color: #000;
+}
+
+.btn-pagar-trabajo img {
+	width: 18px;
+	height: 18px;
+	display: block;
+	object-fit: contain;
+	margin: 0 !important; /* Anula el margin-bottom global que te lo descuadraba */
+	padding: 0;
+}
+
+.btn-pagar-trabajo span {
+	line-height: 1;
+}

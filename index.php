@@ -18,6 +18,7 @@ $router->agregar('/cliente/solicitudes','ControladorVista','ClienteSolicitudes')
 $router->agregar('/cliente/pagos','ControladorVista','ClientePagos');
 $router->agregar('/cliente/trabajos','ControladorVista','ClienteTrabajos');
 $router->agregar('/cliente/perfil','ControladorVista','ClientePerfil');
+$router->agregar('/cliente/carrito','ControladorVista','ClienteCarrito');
 $router->agregar('/cliente/salir','ControladorVista','ClienteSalir');
 $router->agregar('/empleado/inicio','ControladorVista','EmpleadoInicio');
 $router->agregar('/coordinador/inicio','ControladorVista','CoordeinadorInicio');

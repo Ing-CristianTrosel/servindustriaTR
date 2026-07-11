@@ -99,12 +99,17 @@ use DateTime;
             }
         }
 
-        public function validarRegistroDireccion(int $municipio, string $parroquia,string $comunidad,string $calle,string $vivienda){
+        public function validarRegistroDireccion(string $municipio, string $parroquia,string $comunidad,string $calle,string $vivienda){
             $direccion = $this->sanetizacion->sanetizacionDireccion($parroquia,$comunidad,$calle,$vivienda);
+            $municipio = $this->modeloCliente->buscarIdMunicipio($municipio);
             if ($this->validarDireccionRepetida($parroquia,$comunidad,$calle,$vivienda) != true) {
                 echo "Direccion ya registrada";
+                header("location: perfil");
+                exit;
             }else{
-                $this->modeloCliente->insertarDireccionUsuario($municipio,$parroquia,$comunidad,$calle,$vivienda);
+                $this->modeloCliente->insertarDireccionUsuario($municipio['id'],$direccion['parroquia'],$direccion['comunidad'],$direccion['calle'],$direccion['vivienda']);
+                header("location: perfil");
+                exit;
             }
         }
 
@@ -171,8 +176,6 @@ use DateTime;
             if ($direccion != false) {
                 return $direccion;
             }else{
-                $direccion = 'sin direccion';
-                echo "<option value".$direccion.">".$direccion."</option>";
 
             }
         }
@@ -190,5 +193,16 @@ use DateTime;
         public function validarMostrarPagos(int $id_perfil){
             return $solicitudes = $this->modeloCliente->mostrarPagos($id_perfil);
         }
+        public function validarActualizarContraseña(string $contraseña){
+            $clave = password_hash($contraseña,PASSWORD_DEFAULT);
+            $this->modeloCliente->actualizarContraseña($clave,$_SESSION['correo']);
+            header("location: perfil");
+            exit;
+        }
 
+        public  function validarMostrarDirecciones(int $id_perfil){
+            $direccion = $this->modeloCliente->mostrarDireccionesPerfil($id_perfil);
+            return $direccion;
+
+        }
     }

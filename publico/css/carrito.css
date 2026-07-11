@@ -1,0 +1,113 @@
+/* --- COMPLEMENTOS REESTRUCTURACIÓN DEL CARRITO --- */
+
+/* Forzar comportamiento de bloques verticales e impedir flex en línea roto */
+.panel-block {
+    display: block !important;
+}
+
+/* Líneas divisorias y Títulos de las secciones */
+.section-title {
+    font-size: 1.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Contenedor adaptativo para la tabla de la tienda */
+.custom-table-container {
+    border: 1px solid #ffc107 !important; 
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background-color: transparent !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+.custom-shop-table {
+    width: 100% !important;
+    background-color: transparent !important;
+    margin-bottom: 0 !important;
+}
+
+/* Celdas con espaciado generoso */
+.custom-shop-table th, 
+.custom-shop-table td {
+    padding: 16px 20px !important; 
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2) !important; 
+}
+
+.custom-shop-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Títulos de las columnas de la tabla (Amarillo) */
+.table-header-title {
+    color: #ffc107 !important; 
+    font-weight: 700; 
+    background: transparent !important;
+}
+
+/* Estilos de los textos internos de la tabla */
+.table-cell-main {
+    color: #000000 !important; 
+    font-weight: 500; 
+    background: transparent !important;
+}
+
+.table-cell-muted {
+    color: #000000 !important; 
+    background: transparent !important;
+}
+
+.table-cell-price {
+    color: #000000 !important; 
+    font-weight: 700; 
+    background: transparent !important;
+}
+
+/* Selectores de pago */
+.select-center-text {
+    text-align: center;
+}
+
+.select-center-text:focus {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffc107 !important;
+    box-shadow: none !important;
+}
+
+/* Detalles del Pago Móvil */
+.mobile-pay-info {
+    background: rgb(255, 255, 255); 
+    color: #000000 !important;
+}
+
+.highlight-text {
+    color: #ffc107;
+}
+
+/* Textos y divisor del resumen de compra */
+.text-muted-custom {
+    color: #000000 !important;
+}
+
+.text-white-bold {
+    color: #000000 !important; 
+    font-weight: 600;
+}
+
+.total-row-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-price-text {
+    color: #ffc107 !important; 
+    font-weight: 700; 
+    font-size: 1.25rem;
+}
+
+/* Forzar el color del botón de checkout */
+.btn-confirm-pay {
+    background-color: #28a745 !important; 
+    border-color: #28a745 !important; 
+    color: #000000 !important;
+}

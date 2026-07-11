@@ -123,15 +123,19 @@
 				</a>
 				<a href="trabajos" class="action-card">
 					<div class="action-icon">
-						<!-- Tool / trabajos icon -->
 						<img src="../publico/img/plano_negro.png" alt="" class="action-image">
 					</div>
 					<div class="action-label">Ver Trabajos</div>
 				</a>
 			</section>
+
             <div class="content-card mt-4">
-					<div class="card-header px-4 py-3">
-						<h2>Pagos</h2>
+					<div class="px-4 py-3 d-flex justify-content-between align-items-center">
+						<h2 class="mb-0">Pagos</h2>
+						<button class="btn btn-pagar-trabajo" data-bs-toggle="modal" data-bs-target="#modalPago">
+							<img src="../publico/img/mas.png" alt="Añadir">
+							<span>Pagar</span>
+						</button>
 					</div>
 					<div class="table-wrapper">
 						<div class="table-responsive">
@@ -143,7 +147,6 @@
 										<th>Fecha</th>
 										<th>Referencia</th>
 										<th>Metodo</th>
-										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -154,6 +157,58 @@
 					</div>
 			</div>
 		</main>
+		<!-- Modal Formulario de Pago -->
+		<div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalPagoLabel">Registrar Pago de Trabajo</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+					</div>
+					<div class="modal-body">
+						<!-- Puedes cambiar el action de este formulario según tu controlador backend -->
+						<form action="procesar_pago.php" method="POST" id="formRegistrarPago">
+							
+							<div class="mb-3">
+								<label for="trabajo_pago" class="form-label">Seleccionar Trabajo / Asignación</label>
+								<select class="form-select" id="trabajo_pago" name="trabajo_pago" required>
+									<option value="" selected disabled>Seleccione un trabajo pendiente</option>
+									<!-- Aquí puedes mapear tus trabajos pendientes si lo requieres -->
+									<option value="1">Trabajo Ejemplo 1 - Faltante: $50</option> 
+								</select>
+							</div>
+
+							<div class="mb-3">
+								<label for="monto_pago" class="form-label">Monto a Pagar ($)</label>
+								<input type="number" step="0.01" class="form-control" id="monto_pago" name="monto_pago" placeholder="0.00" required>
+							</div>
+
+							<div class="mb-3">
+								<label for="metodo_pago" class="form-label">Método de Pago</label>
+								<select class="form-select" id="metodo_pago" name="metodo_pago" required>
+									<option value="" selected disabled>Seleccione un método</option>
+									<option value="transferencia">Transferencia Bancaria</option>
+									<option value="pago_movil">Pago Móvil</option>
+									<option value="efectivo">Efectivo</option>
+								</select>
+							</div>
+
+							<div class="mb-3">
+								<label for="referencia_pago" class="form-label">Número de Referencia</label>
+								<input type="text" class="form-control" id="referencia_pago" name="referencia_pago" placeholder="Ej: 12345678" required>
+							</div>
+
+							<div class="mb-3">
+								<label for="fecha_pago" class="form-label">Fecha de Transacción</label>
+								<input type="date" class="form-control" id="fecha_pago" name="fecha_pago" required>
+							</div>
+							
+							<button type="submit" class="btn btn-success w-100 mt-2">Reportar Pago</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">

@@ -63,6 +63,9 @@
     public function ClientePerfil(){
         require_once 'app/vistas/cliente/perfil.php';
     }
+    public function ClienteCarrito(){
+        require_once 'app/vistas/cliente/carrito.php';
+    }
     public function ClienteSalir(){
         $this->usuario->salir();
     }

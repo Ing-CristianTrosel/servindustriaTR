@@ -8,14 +8,6 @@
 		<title>Servindustria TR - Cliente</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../publico/css/inicio_cliente.css">
-		
-		<style>
-			.profile-title {
-				font-size: 1.5rem; 
-				border-bottom: 1px solid #ffcc59; 
-				padding-bottom: 8px;
-			}
-		</style>
 	</head>
 	<body>
 
@@ -115,27 +107,126 @@
 						</div>
 					</div>
 					<div class="mt-4 d-flex justify-content-end">
-						<button type="submit" class="btn  px-4">Guardar</button>
+						<button type="submit" class="btn  px-4 btn-pagar-trabajo" value="nombres" name="boton_nombres">Guardar</button>
 					</div>
 				</form>
 			</section>
+
+			<section class="stats-panel d-flex flex-column mb-4 p-4">
+				<div class="welcome-text profile-title mb-3">
+					Direccion
+				</div>
+				<div class="">
+					<div class="px-4 py-3 d-flex justify-content-end align-items-center">
+					
+						<button class="btn btn-pagar-trabajo" data-bs-toggle="modal" data-bs-target="#modalPago">
+							<img src="../publico/img/mas.png" alt="Añadir">
+							<span>Agregar nueva direccion</span>
+						</button>
+					</div>
+					
+						<div class="">
+							<table class="table align-middle mb-0">
+								<thead class="oscuro">
+									<tr>
+										<th>Direccion</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php $cliente->mostrarDireccion();?>						
+								</tbody>
+							</table>
+						</div>
+					
+				</div>
+				
+			</section>
+			<div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalPagoLabel">Registrar nueva direccion</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+					</div>
+					<div class="modal-body">
+
+						<form action="perfil" method="POST" id="formRegistrarPago">
+							
+							<div class="mb-3">
+								<label for="estado" class="form-label">Estado</label>
+								
+								<input type="text" 
+									class="form-control" 
+									id="estado" 
+									name="estado" 
+									list="listaEstados" 
+									placeholder="Escribe para buscar o selecciona un estado..." 
+									required>
+
+								<datalist id="listaEstados">
+									<?php $cliente->mostrarEstados();?>
+								</datalist>
+							</div>
+
+							<div class="mb-3">
+								<label for="municipio" class="form-label">Municipio</label>
+								<input type="text" 
+									class="form-control" 
+									id="municipio" 
+									name="municipios" 
+									list="listaMunicipios" 
+									placeholder="Escribe para buscar o selecciona un estado..." 
+									required>
+
+								<datalist id="listaMunicipios">
+									<?php $cliente->mostrarMunicipios();?>
+								</datalist>
+							</div>
+
+							<div class="mb-3">
+								<label for="parroquia" class="form-label">Parroquia</label>
+								<input type="text" class="form-control" id="parroquia" name="parroquia" placeholder="Parroquia" required>
+							</div>
+
+							<div class="mb-3">
+								<label for="comunidad" class="form-label">Comunidad</label>
+								<input type="text" class="form-control" id="comunidad" name="comunidad" placeholder="Comunidad" required>
+							</div>
+
+							<div class="mb-3">
+								<label for="calle" class="form-label">Calle</label>
+								<input type="text" class="form-control" id="calle" name="calle" placeholder="Calle" required>
+							</div>
+
+							<div class="mb-3">
+								<label for="vivienda" class="form-label">Vivienda</label>
+								<input type="text" class="form-control" id="vivienda" name="vivienda" placeholder="Vivienda" required>
+							</div>
+							
+							<button type="submit" class="btn btn-success w-100 mt-2" name="boton-direccion" value="direccion">Registrar direccion</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 			<section class="stats-panel d-flex flex-column p-4">
 				<div class="welcome-text profile-title mb-3">
 					Seguridad
 				</div>
-				<form action="cambiar_password" method="POST" class="w-100">
+				<form action="perfil" method="POST" class="w-100">
 					<div class="row g-3 align-items-end">
 						<div class="col-md-4">
 							<label for="nueva_password" class="form-label">Nueva Contraseña</label>
-							<input type="password" class="form-control" id="nueva_password" name="nueva_password" placeholder="Mínimo 8 caracteres" minlength="8" required>
+							<input type="password" class="form-control" id="nueva_password" name="contraseña" placeholder="Mínimo 8 caracteres" minlength="8" required>
 						</div>
 						<div class="col-md-4">
 							<label for="confirmar_password" class="form-label">Confirmar Contraseña</label>
-							<input type="password" class="form-control" id="confirmar_password" name="confirmar_password" placeholder="Repite tu contraseña" minlength="8" required>
+							<input type="password" class="form-control" id="confirmar_password" name="confirmar_contraseña" placeholder="Repite tu contraseña" minlength="8" required>
 						</div>
 						<div class="col-md-4">
-							<button type="submit" class="btn w-50">Cambiar Contraseña</button>
+							<button type="submit" class="btn w-75 btn-pagar-trabajo" value="contraseña" name="boton_clave">Cambiar Contraseña</button>
 						</div>
 					</div>
 				</form>
@@ -144,5 +235,6 @@
 		</main>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="../publico/js/inicio.js"></script>
+		<script src="../publico/js/direccion.js"></script>
 	</body>
 </html>

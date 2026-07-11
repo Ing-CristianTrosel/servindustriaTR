@@ -23,12 +23,10 @@ use DateTime;
             return $filas = $consulta->rowCount();
         }
 
-        public function mostrarMunicipios(int $id_estado){
-            $sql = "SELECT `nombre_municipio` FROM `municipios` WHERE `id_estado` = :id_estado";
+        public function mostrarMunicipios(){
+            $sql = "SELECT `nombre_municipio` FROM `municipios`";
             $consulta = $this->base->conexion->prepare($sql);
-            $consulta->execute([
-                ':id_estado' => $id_estado
-            ]);
+            $consulta->execute();
             return $municipio = $consulta->fetchAll(\PDO::FETCH_ASSOC);
         }
 
@@ -96,6 +94,15 @@ use DateTime;
             return $id_perfil['id'];
         }
 
+        public function buscarIdMunicipio(string $municipio){
+            $sql = "SELECT `id` FROM `municipios` WHERE `nombre_municipio` = :municipio";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':municipio' => $municipio
+            ]);
+            return $municipio = $consulta->fetch(\PDO::FETCH_ASSOC);
+        }
+
         public function perfilRepetido(string $correo){
             $id_usuario = $this->buscarIdUsuario($correo);
             $sql = "SELECT `id_usuario` FROM `perfil` WHERE `id_usuario` = :id_usuario";
@@ -121,20 +128,19 @@ use DateTime;
         }
 
         public function insertarDireccionUsuario(int $id_municipio,string $parroquia,string $comunidad,string $calle, string $vivienda){
-            $id_usuario = $this->buscarIdUsuario($_SESSION['correo']);
             $sql = "INSERT INTO `direccion`(`id_municipio`,`parroquia`,`comunidad`,`calle`,`vivienda`,`id_perfil`) values (:id_municipio,:parroquia,:comunidad,:calle,:vivienda,:id_perfil)";
             $consulta = $this->base->conexion->prepare($sql);
-            $consulta->excute([
+            $consulta->execute([
                 ':id_municipio' => $id_municipio,
                 ':parroquia' => $parroquia,
                 ':comunidad' => $comunidad,
                 ':calle' => $calle,
                 'vivienda' => $vivienda,
-                'id_perfil' => $id_usuario
+                'id_perfil' => $_SESSION['id_perfil']
             ]);
         }
 
-        public function seleccionarDireccion(string $parroquia,string $comunidad,string $calle,string $vivienda,int $id_perfil){
+        public function seleccionarDireccion(string $parroquia,string $comunidad,string $calle,string $vivienda){
             $sql = "SELECT * FROM `direccion` WHERE `parroquia`= :parroquia AND `comunidad` = :comunidad AND `calle` = :calle AND `vivienda` = :vivienda AND `id_perfil` = :id_perfil";
             $consulta = $this->base->conexion->prepare($sql);
             $consulta->execute([
@@ -142,7 +148,7 @@ use DateTime;
                 ':comunidad' => $comunidad,
                 ':calle' => $calle,
                 ':vivienda' => $vivienda,
-                ':id_perfil' => $id_perfil
+                ':id_perfil' => $_SESSION['id_perfil']
             ]);
             return $filas = $consulta->rowCount();
         }
@@ -243,6 +249,24 @@ use DateTime;
                 ':apellido2' => $apellido2,
                 ':id_cliente' => $id_cliente
             ]);
+        }
+
+        public function actualizarContraseña(string $clave,string $correo){
+            $sql = "UPDATE `usuario` SET `Contraseña` = :clave WHERE `correo` = :correo";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':clave' => $clave,
+                ':correo' =>$correo
+            ]);
+        }
+
+        public  function mostrarDireccionesPerfil(int $id_perfil){
+            $sql = "SELECT CONCAT_WS('/',e.nombre_estado,m.nombre_municipio,d.parroquia,d.comunidad,d.calle,d.vivienda) AS ubicacion FROM direccion d INNER JOIN municipios m ON d.id_municipio=m.id INNER JOIN estados e ON m.id_estado=e.id WHERE d.id_perfil= :id_perfil AND d.deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_perfil' => $id_perfil
+            ]);
+            return $direccion = $consulta->fetchAll(\PDO::FETCH_ASSOC);
         }
     }
 
