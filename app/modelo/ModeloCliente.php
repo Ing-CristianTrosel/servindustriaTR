@@ -276,6 +276,31 @@ use DateTime;
                 ':id' => $id
             ]);
         }
+
+        public function mostrarTodasSolicitudes(){
+            $sql = "SELECT s.id AS id, CONCAT(p.nombre_1, ' ', p.apellido_1) AS nombre, s.servicio, s.descripcion, s.fecha_visita FROM solicitudes s INNER JOIN perfil p ON s.id_cliente = p.id WHERE s.estado NOT IN ('aprobado', 'rechazado') AND s.deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute();
+            return $nombre = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function aprovarSolicitud(int $id){
+            $sql = "UPDATE `solicitudes` SET `estado`= 'aprobado', `id_coordinador` = :id_coordinador WHERE `id` = :id";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id' => $id,
+                ':id_coordinador' => $_SESSION['id_perfil']
+            ]);
+        }
+
+        public function rechazarSolicitud(int $id){
+            $sql = "UPDATE `solicitudes` SET `estado`= 'rechazado', `id_coordinador` = :id_coordinador WHERE `id` = :id";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id' => $id,
+                ':id_coordinador' => $_SESSION['id_perfil']
+            ]);
+        }
     }
 
 ?>

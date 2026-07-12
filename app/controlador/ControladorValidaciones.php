@@ -210,4 +210,19 @@ use DateTime;
             $this->modeloCliente->borrarSolicitud($valor);
             header("location: solicitudes");
         }
+
+        public function validarMostrarTodasSolicitudes(){
+            return $solicitudes = $this->modeloCliente->mostrarTodasSolicitudes();
+        }
+
+        public function validarAprovarSolicitud(int $valor){
+            $this->modeloCliente->aprovarSolicitud($valor);
+            header("location: inicio");
+        }
+
+        public function validarRechazarSolicitud(int $valor){
+            $this->modeloCliente->rechazarSolicitud($valor);
+            header("location: inicio");
+        }
+
     }

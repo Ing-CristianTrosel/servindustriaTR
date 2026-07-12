@@ -5,7 +5,7 @@
     	<link class="action-image" rel="icon" type="image/png" href="../publico/img/logo.png">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Servindustria TR - Cliente</title>
+		<title>Servindustria TR - Coordinador</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../publico/css/inicio_cliente.css">
 		<link rel="stylesheet" href="../publico/css/inicio_coordinador.css">
@@ -50,25 +50,21 @@
 						<img class="action-image" src="../publico/img/usuario.png" alt="">
 					</div>
 					<div>
-						<div class="welcome-text">Bienvenido</div>
+						<div class="welcome-text">Bienvenido coordinador</div>
 						<div class="welcome-name"><?php $cliente->nombre();?></div>
 					</div>
 				</div>
 				<div class="stats-list">
 					<div class="stat-card">
-						<div class="stat-number">$<?php echo $cliente->montoTotal;?></div>
-						<div class="stat-label">Monto Pagados</div>
+						<div class="stat-number">$18,000</div>
+						<div class="stat-label">Monto generado</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number">$<?php echo $cliente->montoFaltante;?></div>
+						<div class="stat-number">$5,000</div>
 						<div class="stat-label">Monto Faltante</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number"><?php echo $cliente->trabajosTotales;?></div>
-						<div class="stat-label">Trabajos Completados</div>
-					</div>
-					<div class="stat-card">
-						<div class="stat-number"><?php echo $cliente->trabajosFaltantes;?></div>
+						<div class="stat-number">25</div>
 						<div class="stat-label">Trabajos Completados</div>
 					</div>
 				</div>
@@ -104,7 +100,7 @@
                             <button class="nav-link px-4 py-2.5 fw-bold rounded-3" 
                                     id="tab-financiero" data-bs-toggle="pill" data-bs-target="#pane-financiero" 
                                     type="button" role="tab" aria-controls="pane-financiero" aria-selected="false">
-                                <i class="bi bi-bar-chart-line-fill me-2"></i>Trabajos Participados
+                                <i class="bi bi-bar-chart-line-fill me-2"></i>Trabajos Realizados
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -130,12 +126,9 @@
                     <!-- VISTA 1: GESTIÓN DE SOLICITUDES -->
                     <div class="tab-pane fade show active" id="pane-solicitudes" role="tabpanel" aria-labelledby="tab-solicitudes">
                         <div class="d-flex align-items-center mb-4">
-                            <div class="icon-shape rounded-3 me-3 coordinador-icon-box">
-                                <i class="bi bi-patch-check-fill"></i>
-                            </div>
                             <div>
                                 <h5 class="mb-0 fw-bold coordinador-titulo-caliente">Aprobación de Solicitudes</h5>
-                                <p class="text-muted small mb-0">Revisa y procesa las peticiones de los clientes registradas en el sistema[cite: 1].</p>
+                                <p class="text-muted small mb-0">Revisa y procesa las peticiones de los clientes registradas en el sistema.</p>
                             </div>
                         </div>
                         
@@ -151,21 +144,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="fw-bold text-dark">Pedro Pérez</td>
-                                        <td>
-                                            <span class="badge px-3 py-2 text-dark font-monospace coordinador-badge-acento">fontaneria</span>
-                                            <small class="text-muted d-block mt-1">instalacion_puntos</small>
-                                        </td>
-                                        <td class="text-secondary">Revisión de filtración en tubería principal.</td>
-                                        <td>2026-07-11 16:08:00</td>
-                                        <td class="text-center">
-                                            <div class="d-inline-flex gap-2">
-                                                <button class="btn btn-action-approve btn-sm px-3 rounded-2 fw-bold"><i class="bi bi-check2 me-1"></i> Aprobar</button>
-                                                <button class="btn btn-action-reject btn-sm px-2 rounded-2"><i class="bi bi-x-lg">Rechazar</i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php $cliente->mostrarSolicitudesCoordinador()?>
                                 </tbody>
                             </table>
                         </div>

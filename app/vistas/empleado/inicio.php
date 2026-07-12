@@ -13,9 +13,35 @@
 		<link rel="stylesheet" href="../publico/css/inicio_empleado.css">
 	</head>
 	<body>
+        
+		<button class="hamburger-toggle" id="sidebar-toggle" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-label="Abrir menú" aria-controls="navbarNav" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
 		<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
-
+            <aside class="sidebar" id="sidebar-menu" aria-label="Menú lateral">
+                        <div class="sidebar-header">
+                            <a class="sidebar-brand" href="#">
+                                <span class="brand-logo" aria-hidden="true">
+                                    <img class="action-image" src="../publico/img/logo.png" alt="">
+                                </span>
+                                <span class="brand-text fw-bold">Servindustria TR</span>
+                            </a>
+                            <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Cerrar menú">&times;</button>
+                        </div>
+                        <nav class="sidebar-nav">
+                            
+                            <a class="btn btn-salir sidebar-link-logout sidebar-link-cart" href="salir">
+                                <span class="action-carrito">
+                                    <img class="action-image" src="../publico/img/puerta_blanca.png" alt="">
+                                </span>
+                            Salir</a>
+                        </nav>
+            </aside>
 		<main class="container main-content ">
 			<section class="stats-panel">
 				<div class="avatar-wrap">

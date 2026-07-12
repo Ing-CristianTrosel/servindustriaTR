@@ -85,20 +85,23 @@
 								<thead>
 									<tr>
 										<th scope="col" class="table-header-title">PRODUCTO</th>
+										<th scope="col" class="table-header-title">CANTIDAD</th>
 										<th scope="col" class="table-header-title">ÁREA</th>
 										<th scope="col" class="table-header-title text-end">PRECIO</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td class="table-cell-main">Instalación de Cableado Eléctrico</td>
+										<td class="table-cell-main">Tomacorriente</td>
+										<td class="table-cell-price">30</td>
 										<td class="table-cell-muted">Electricidad</td>
 										<td class="table-cell-price text-end">$150.00</td>
 									</tr>
 									<tr>
-										<td class="table-cell-main">Mantenimiento de Tuberías</td>
-										<td class="table-cell-muted">Plomería</td>
-										<td class="table-cell-price text-end">$85.00</td>
+										<td class="table-cell-main">lampara</td>
+										<td class="table-cell-price">16</td>
+										<td class="table-cell-muted">Electricidad</td>
+										<td class="table-cell-price text-end">$80.00</td>
 									</tr>
 								</tbody>
 							</table>
@@ -143,16 +146,24 @@
 						
 						<div class="d-flex justify-content-between align-items-center mb-2">
 							<span class="text-muted-custom">Subtotal:</span>
-							<span class="text-white-bold">$235.00</span>
+							<span class="text-white-bold">$ 235.00</span>
 						</div>
+
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<span class="text-muted-custom">Monto BS:</span>
+							<span class="text-white-bold">BS 167.320 </span>
+						</div>
+
 						<div class="d-flex justify-content-between align-items-center mb-3">
 							<span class="text-muted-custom">Impuestos (IVA):</span>
-							<span class="text-white-bold">$0.00</span>
+							<span class="text-white-bold">$ 0.00</span>
 						</div>
+
+						
 						
 						<div class="d-flex justify-content-between align-items-center mb-4 pt-3 total-row-divider">
 							<span class="text-white-bold">Total Estimado:</span>
-							<span class="final-price-text">$235.00</span>
+							<span class="final-price-text">$ 167.320</span>
 						</div>
 
 						<!-- Botón final para procesar el flujo -->

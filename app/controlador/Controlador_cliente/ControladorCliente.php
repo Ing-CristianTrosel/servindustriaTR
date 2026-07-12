@@ -101,7 +101,7 @@ use app\modelo\ModeloCliente;
             if($solicitud['estado'] != 'aprobado'){
             echo "
                 <form action="."solicitudes"." method="."POST"." >
-                    <td><button class="."btn btn-pagar-trabajo"." value=".$solicitud['id']." name="."borrar"."  onchange="."this.form.submit()"." >Borrar</button></td>
+                    <td><button class="."btn btn-pagar-trabajo"." value=".$solicitud['id']." name="."borrar"."  onchange='this.form.submit()' >Borrar</button></td>
                 </form>
                 ";
             }else{
@@ -168,6 +168,46 @@ use app\modelo\ModeloCliente;
             $this->validaciones->validarBorrarSolicitud($valor);
         }
     }
+
+    public function mostrarSolicitudesCoordinador(){
+        $solicitudes = $this->validaciones->validarMostrarTodasSolicitudes();
+        foreach($solicitudes as $solicitud){
+            echo "
+                <tr>
+                    <td class='fw-bold text-dark'>".$solicitud['nombre']."</td>
+                    <td>
+                        <span class='badge px-3 py-2 text-dark font-monospace coordinador-badge-acento'>".$solicitud['servicio']."</span>
+                    </td>
+                    <td class='text-secondary'>".$solicitud['descripcion']."</td>
+                    <td>".$solicitud['fecha_visita']."</td>
+                    <td class='text-center'>
+                        <div class='d-inline-flex gap-2'>
+                            <form action='inicio' method='POST' >
+                                <button class='btn btn-action-approve btn-sm px-3 rounded-2 fw-bold' name='boton-aprovar' value='".$solicitud['id']."'  onchange='this.form.submit()'><i class='bi bi-check2 me-1' ></i> Aprobar</button>
+                            </form>
+                            <form action='inicio' method='POST' >
+                                <button class='btn btn-action-reject btn-sm px-2 rounded-2' name='boton-rechazar' value=".$solicitud['id']."  onchange='this.form.submit()'><i class='bi bi-x-lg' ></i> Rechazar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            ";
+        }
+    }
+
+    public function aprovarSolicitudes(){
+        if (isset($_POST['boton-aprovar'])) {
+            $valor = $_POST['boton-aprovar'];
+            $this->validaciones->validarAprovarSolicitud($valor);
+        }
+    }
+
+    public function rechazarSolicitudes(){
+        if (isset($_POST['boton-rechazar'])) {
+            $valor = $_POST['boton-rechazar'];
+            $this->validaciones->validarRechazarSolicitud($valor);
+        }
+    }
 }
 $cliente = new ControladorCliente();
 $cliente->inicio();
@@ -176,3 +216,4 @@ $cliente->nombreCompleto();
 $cliente->cambioContraseña();
 $cliente->ingresarDireccion();
 $cliente->borrarSolicitudes();
+$cliente->aprovarSolicitudes();
