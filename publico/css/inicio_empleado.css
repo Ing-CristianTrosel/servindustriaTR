@@ -1,0 +1,101 @@
+/* ==========================================================================
+   HORARIO CORPORATIVO SOBRIO (VERSION COMPACTA)
+   ========================================================================== */
+
+/* Se mantiene el ancho mínimo pero se reduce el espaciado entre bloques */
+.schedule-corporate-table {
+    min-width: 1000px;
+    border-collapse: separate !important;
+    border-spacing: 4px 4px !important; /* Reducido para compactar verticalmente */
+}
+
+/* Encabezado de la columna de horas (Ancho reducido al mínimo formal) */
+/* 1. Encabezado de la columna de horas (Ancho fijo ultra-reducido) */
+.cell-time-header {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px;
+    width: 100px !important; /* Forzamos un ancho fijo en píxeles */
+    min-width: 65px !important;
+    padding: 8px 0 !important;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+/* 2. Celdas de las horas (Heredan el mismo ancho exacto de la cabecera) */
+.cell-time-label {
+    background-color: #495057 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px;
+    width: 100px !important; /* Mismo ancho fijo que el header */
+    min-width: 65px !important;
+    padding: 6px 0 !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+/* 3. Encabezados de los días (Se elimina el porcentaje rígido para que tomen automáticamente todo el espacio restante disponible) */
+.cell-day-header {
+    background-color: #343a40 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px;
+    width: auto !important; /* Cambiado a auto para que absorba el espacio sobrante */
+    padding: 8px 0 !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* Espacio vacío / sin asignación */
+.cell-empty {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 4px;
+    height: 32px; /* Forzamos una altura base pequeña y uniforme */
+}
+
+/* Bloques formales de tareas asignadas */
+.corporate-block {
+    background-color: #ffffff !important;
+    border: 1px solid #212529 !important;
+    border-left: 4px solid #212529 !important;
+    border-radius: 4px;
+    padding: 4px 6px !important; /* Ajuste interno mínimo */
+    vertical-align: middle !important; /* Centrado para que luzca bien en bloques pequeños */
+    text-align: left !important;
+}
+
+/* Texto del título del trabajo */
+.block-task-title {
+    color: #212529;
+    font-weight: 700;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin-bottom: 1px;
+}
+
+/* Subtexto formal de duración */
+.block-task-time {
+    color: #6c757d;
+    font-size: 0.68rem;
+    font-weight: 500;
+    font-family: monospace;
+}
+
+/* Ajuste de los botones superiores para que vayan acorde a la escala compacta */
+#v-pills-tab .nav-link {
+    color: #495057;
+    background-color: #f8f9fa;
+    border-color: #dee2e6 !important;
+    padding: 6px 16px !important; /* Botones más estilizados y menos altos */
+}
+#v-pills-tab .nav-link.active {
+    color: #ffffff !important;
+    background-color: #212529 !important;
+    border-color: #212529 !important;
+}

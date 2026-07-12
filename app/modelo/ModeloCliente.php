@@ -222,7 +222,7 @@ use DateTime;
         }
 
         public function mostrarSolicitudes(int $id_cliente){
-            $sql = "SELECT `direccion`,`servicio`,`area`,`fecha_visita`,`estado` FROM `solicitudes` WHERE `id_cliente` = :id_cliente";
+            $sql = "SELECT `id`,`direccion`,`servicio`,`area`,`fecha_visita`,`estado`, `deleted_at` FROM `solicitudes` WHERE `id_cliente` = :id_cliente AND `deleted_at` IS NULL";
             $consulta = $this->base->conexion->prepare($sql);
             $consulta->execute([
                 ':id_cliente' => $id_cliente
@@ -267,6 +267,14 @@ use DateTime;
                 ':id_perfil' => $id_perfil
             ]);
             return $direccion = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function borrarSolicitud(int $id){
+            $sql = "UPDATE `solicitudes` SET `deleted_at`= CURRENT_TIMESTAMP WHERE `id` = :id";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id' => $id
+            ]);
         }
     }
 

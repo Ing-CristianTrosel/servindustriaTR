@@ -210,44 +210,7 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="modalCompraLabel">Formulario de compra</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-					</div>
-					<div class="modal-body">
-						<form id="formCompra">
-							<div class="mb-3">
-								<label class="form-label">Producto</label>
-								<label type="text" class="form-control" id="productoCompra" readonly></label>
-							</div>
-							<div class="mb-3">
-								<label class="form-label">Precio unitario</label>
-								<label type="text" class="form-control" id="precioCompra" readonly></label>
-							</div>
-							<div class="mb-3">
-								<label class="form-label">Área</label>
-								<label type="text" class="form-control" id="areaCompra" readonly></label>
-							</div>
-							<div class="mb-3">
-								<label class="form-label">Cantidad</label>
-								<input type="number" class="form-control" id="cantidadCompra" min="1" value="1">
-							</div>
-							<div class="mb-3">
-								<label class="form-label">Total</label>
-								<label type="text" class="form-control" id="totalCompra" readonly></label>
-							</div>
-							
-							<button type="submit" class="btn btn-warning w-100">Agregar al carrito</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-overlay" id="service-form-overlay">
+			<div class="form-overlay" id="service-form-overlay">
         <div class="form-container">
             <button class="close-form" id="close-form-btn">&times;</button>
             
@@ -257,6 +220,7 @@
                 <div class="form-group">
                     <label for="direccion">Direccion</label>
                     <select class="form-select" id="direccion" name="direccion" required>
+						<option value="" selected disabled>Seleccione una direccion</option>
                         <?php $cliente->MostrarOpcionesDireccion();?>
                     </select>
                 </div>
@@ -264,6 +228,7 @@
                 <div class="form-group">
                     <label for="tipo_servicio">Tipo de Servicio</label>
                     <select class="form-select" id="tipo_servicio" name="tipo_servicio" required>
+						<option value="" selected disabled>Seleccione un servicio</option>
                         <option value="electricidad" selected>Electricidad</option>
                         <option value="fontaneria">Fontanería</option>
                         <option value="reparacion">Reparación General</option>
@@ -273,6 +238,7 @@
                 <div class="form-group">
                     <label for="tipo_area">Tipo de Area</label>
                     <select class="form-select" id="tipo_area" name="tipo_area" required>
+						<option value="" selected disabled>Seleccione un area</option>
                         <option value="montaje_alumbrado" selected>Montaje de Alumbrado</option>
                         <option value="instalacion_puntos">Instalación de Puntos</option>
                         <option value="cableado">Cableado</option>
@@ -281,15 +247,15 @@
 
                 <div class="form-group">
                     <label for="fecha_visita">Fecha de visita</label>
-                    <input type="date" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                    <input type="datetime-local" class="form-control" id="fecha_visita" name="fecha_visita" required>
                 </div>
 
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
-                    <textarea class="form-textarea" id="descripcion" name="descripcion" required>Tengo poca luz en mi tienda, quiero cambiar alrededor de 25 lamparas</textarea>
+                    <textarea class="form-textarea" id="descripcion" name="descripcion" placeholder="Colocar una pequeña descripcion de su problema" required></textarea>
                 </div>
 
-                <button type="submit">Enviar</button>
+                <button type="submit" name="boton-servicio" value="servicio">Enviar</button>
             </form>
         </div>
     </div>

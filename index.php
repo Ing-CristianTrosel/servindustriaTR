@@ -21,7 +21,9 @@ $router->agregar('/cliente/perfil','ControladorVista','ClientePerfil');
 $router->agregar('/cliente/carrito','ControladorVista','ClienteCarrito');
 $router->agregar('/cliente/salir','ControladorVista','ClienteSalir');
 $router->agregar('/empleado/inicio','ControladorVista','EmpleadoInicio');
-$router->agregar('/coordinador/inicio','ControladorVista','CoordeinadorInicio');
+$router->agregar('/empleado/salir','ControladorVista','ClienteSalir');
+$router->agregar('/coordinador/inicio','ControladorVista','CoordinadorInicio');
+$router->agregar('/coordinador/salir','ControladorVista','ClienteSalir');
 $router->agregar('/jefe/inicio','ControladorVista','JefeInicio');
 $router->agregar('/administrador/inicio','ControladorVista','AdministradorInicio');
 

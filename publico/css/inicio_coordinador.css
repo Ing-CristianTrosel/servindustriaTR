@@ -1,0 +1,193 @@
+/* ==========================================================================
+   HOJA DE ESTILOS: MODULO COORDINADOR (PALETA: CORPORATIVA SOBRIA)
+   ========================================================================== */
+
+/* Fondo general gris frío claro */
+.coordinador-seccion-bg {
+    background-color: #ffffff; /* Sincronizado con el fondo claro del empleado */
+    min-height: 100vh;
+    color: #212529; /* Gris oscuro principal */
+}
+
+/* Bordes internos utilizando Gris Claro */
+.coordinador-tabs-border {
+    border-color: #dee2e6 !important;
+}
+
+/* Títulos con el color Gris Oscuro Principal */
+.coordinador-titulo-caliente {
+    color: #212529 !important;
+}
+
+/* Icono contenedor decorativo con fondo Gris Claro y tipografía Oscura */
+.coordinador-icon-box {
+    background-color: #dee2e6;
+    color: #212529;
+    padding: 10px 14px;
+    font-size: 1.25rem;
+}
+
+/* Fondo para los Inputs utilizando el Gris Ultra Claro */
+.coordinador-input-bg {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+}
+
+/* Tarjetas de métrica en los reportes */
+.coordinador-card-metrica {
+    border-color: #dee2e6 !important;
+    background-color: #FFFFFF !important;
+}
+
+.metrica-letra-espacio {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Badge con el color Gris Intermedio del empleado */
+.coordinador-badge-acento {
+    background-color: #ffcc59 !important;
+    color: #000000 !important;
+}
+
+/* Estilos de la botonera Nav Pills superior (Inactivos en Gris Claro) */
+#coordinador-tabs .nav-link {
+    color: #495057;
+    background-color: #f8f9fa; /* Fondo secundario gris ultra claro */
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+}
+
+#coordinador-tabs .nav-link:hover {
+    background-color: #dee2e6; /* Un tono gris un poco más oscuro al pasar el cursor */
+    color: #212529;
+}
+
+/* Botón activo pasa a ser Gris Oscuro Principal (Sincronizado con Nav-link Active) */
+#coordinador-tabs .nav-link.active {
+    color: #000 !important;
+    background-color: #ffcc59 !important; 
+    box-shadow: 0 4px 10px rgba(33, 37, 41, 0.15);
+}
+
+/* Botones principales de acción en Gris Oscuro */
+.btn-caliente {
+    background-color: #212529;
+    color: #FFFFFF;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-caliente:hover {
+    background-color: #343a40;
+    color: #FFFFFF;
+}
+
+/* Botón de salida con acento Gris Destacado */
+.btn-acento-salida {
+    background-color: #495057;
+    color: #ffffff;
+    border: none;
+}
+.btn-acento-salida:hover {
+    background-color: #343a40;
+}
+
+/* Tablas con cabecera en Gris Oscuro Intermedio */
+.custom-table thead th {
+    background-color: #ffcc59;
+    color: #000;
+    font-weight: 600;
+    border-bottom: 2px solid #ffcc59;
+    font-size: 0.85rem;
+    text-transform: uppercase; /* ¡Corregido de text-uppercase a text-transform! */
+    letter-spacing: 0.5px;
+    padding: 12px;
+}
+
+.custom-table tbody td {
+    padding: 14px 12px;
+}
+
+/* Botones de acción rápidos dentro de las tablas */
+.btn-action-approve {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #212529;
+    transition: all 0.2s;
+}
+
+.btn-action-approve:hover {
+    background-color: #ffcc59;
+    color: #000;
+}
+
+.btn-action-reject {
+    background-color: #ffffff;
+    color: #dc3545; /* Mantiene la alerta destructiva estándar */
+    border: 1px solid #dc3545;
+}
+
+.btn-action-reject:hover {
+    background-color: #fee2e2;
+    color: #dc3545;
+}
+
+/* Alerta de pago sutil */
+.bg-danger-light {
+    background-color: #fee2e2;
+}
+
+/* ==========================================================================
+   ESTILOS COMPONENTES DEL HORARIO Y AGENDA SEMANAL
+   ========================================================================== */
+
+/* Estilos de la tabla contenedora */
+.tabla-horario-semanal {
+    min-width: 900px;
+    border-color: rgba(255, 204, 0, 0.4) !important;
+}
+
+/* Columnas de los encabezados */
+.tabla-horario-semanal thead th.columna-hora-encabezado {
+    width: 10%;
+    background-color: #212529;
+    color: white !important;
+}
+
+.tabla-horario-semanal thead th.columna-dia {
+    width: 12.8%;
+    background-color: #212529;
+    
+}
+
+/* Celda lateral de las horas */
+.tabla-horario-semanal tbody td.celda-bloque-hora {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+/* Tarjetas dinámicas de los bloques de tareas */
+.tarjeta-bloque-trabajo {
+    font-size: 0.75rem;
+    border-width: 2px !important;
+}
+
+.titulo-trabajo-bloque {
+    line-height: 1.1;
+}
+
+/* Estilos personalizados para el Modal */
+.modal-cronograma-content {
+    border: 0 !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.modal-cronograma-header {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+}

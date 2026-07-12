@@ -70,10 +70,10 @@
         $this->usuario->salir();
     }
     public function EmpleadoInicio(){
-        require_once 'app/vistas/empleado/inicio.html';
+        require_once 'app/vistas/empleado/inicio.php';
     }
     public function CoordinadorInicio(){
-        require_once 'app/vistas/coordinador/inicio.html';
+        require_once 'app/vistas/coordinador/inicio.php';
     }
     public function JefeInicio(){
         require_once 'app/vistas/jefe/inicio.html';

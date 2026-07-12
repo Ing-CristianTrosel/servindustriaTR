@@ -205,4 +205,9 @@ use DateTime;
             return $direccion;
 
         }
+
+        public function validarBorrarSolicitud(int $valor){
+            $this->modeloCliente->borrarSolicitud($valor);
+            header("location: solicitudes");
+        }
     }

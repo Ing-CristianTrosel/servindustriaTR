@@ -34,7 +34,7 @@ use app\modelo\ModeloCliente;
     }
 
     public function solicitarServicio(){
-            if (isset($_POST['boton_servicio']) == 'servicio') {
+            if (isset($_POST['boton-servicio']) == 'servicio') {
             $direccion = $_POST['direccion'];
             $servicio = $_POST['tipo_servicio'];
             $area = $_POST['tipo_area'];
@@ -99,7 +99,11 @@ use app\modelo\ModeloCliente;
                     <td>".$solicitud['estado']."</td>
             ";
             if($solicitud['estado'] != 'aprobado'){
-            echo "<td><a href="."Eliminar"." >Eliminar</a></td>";
+            echo "
+                <form action="."solicitudes"." method="."POST"." >
+                    <td><button class="."btn btn-pagar-trabajo"." value=".$solicitud['id']." name="."borrar"."  onchange="."this.form.submit()"." >Borrar</button></td>
+                </form>
+                ";
             }else{
                 echo "<td></td>";
             }
@@ -157,6 +161,13 @@ use app\modelo\ModeloCliente;
             ";
         }
     }
+
+    public function borrarSolicitudes(){
+        if (isset($_POST['borrar'])) {
+            $valor = $_POST['borrar'];
+            $this->validaciones->validarBorrarSolicitud($valor);
+        }
+    }
 }
 $cliente = new ControladorCliente();
 $cliente->inicio();
@@ -164,3 +175,4 @@ $cliente->solicitarServicio();
 $cliente->nombreCompleto();
 $cliente->cambioContraseña();
 $cliente->ingresarDireccion();
+$cliente->borrarSolicitudes();

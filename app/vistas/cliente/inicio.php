@@ -239,10 +239,10 @@
             <h1>Solicitar Servicio</h1>
 
             <form action="inicio" method="post" id="actual-service-form">
-				<?php $this->validarServicio = true?>
                 <div class="form-group">
                     <label for="direccion">Direccion</label>
                     <select class="form-select" id="direccion" name="direccion" required>
+						<option value="" selected disabled>Seleccione una direccion</option>
                         <?php $cliente->MostrarOpcionesDireccion();?>
                     </select>
                 </div>
@@ -250,6 +250,7 @@
                 <div class="form-group">
                     <label for="tipo_servicio">Tipo de Servicio</label>
                     <select class="form-select" id="tipo_servicio" name="tipo_servicio" required>
+						<option value="" selected disabled>Seleccione un servicio</option>
                         <option value="electricidad" selected>Electricidad</option>
                         <option value="fontaneria">Fontanería</option>
                         <option value="reparacion">Reparación General</option>
@@ -259,6 +260,7 @@
                 <div class="form-group">
                     <label for="tipo_area">Tipo de Area</label>
                     <select class="form-select" id="tipo_area" name="tipo_area" required>
+						<option value="" selected disabled>Seleccione un area</option>
                         <option value="montaje_alumbrado" selected>Montaje de Alumbrado</option>
                         <option value="instalacion_puntos">Instalación de Puntos</option>
                         <option value="cableado">Cableado</option>
@@ -272,10 +274,10 @@
 
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
-                    <textarea class="form-textarea" id="descripcion" name="descripcion" required>Tengo poca luz en mi tienda, quiero cambiar alrededor de 25 lamparas</textarea>
+                    <textarea class="form-textarea" id="descripcion" name="descripcion" placeholder="Colocar una pequeña descripcion de su problema" required></textarea>
                 </div>
 
-                <button type="submit">Enviar</button>
+                <button type="submit" name="boton-servicio" value="servicio">Enviar</button>
             </form>
         </div>
     </div>

@@ -662,3 +662,81 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .btn-pagar-trabajo span {
 	line-height: 1;
 }
+
+/* Asegurar que el botón del dropdown no deforme el formulario y use puntos suspensivos */
+/* Asegurar que el botón del dropdown ocupe todo el ancho y alinee la flecha a la derecha */
+.dropdown-toggle-custom {
+    display: flex !important;          /* Activamos Flexbox */
+    justify-content: space-between;    /* Empuja el texto a la izquierda y la flecha a la derecha */
+    align-items: center;               /* Centra verticalmente ambos elementos */
+    text-align: left;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    padding: 12px;          /* Restauramos el padding regular */
+    border-radius: 20px;
+    position: relative;
+}
+
+/* Forzar a que el triangulito de Bootstrap no tenga márgenes extras innecesarios */
+.dropdown-toggle-custom::after {
+    margin-left: auto;                 /* Asegura que se ancle firmemente a la derecha */
+}
+
+/* Evitar que el contenedor del texto colapse o empuje la flecha */
+.dropdown-toggle-custom span {
+    display: inline-block;
+    max-width: calc(100% - 20px);      /* Deja un espacio reservado de 20px exclusivo para la flecha */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Personalizar el menú desplegable de Bootstrap */
+.custom-dropdown-menu {
+    max-height: 200px;        /* Altura máxima antes de activar el scroll */
+    overflow-y: auto;         /* Activa la barra de desplazamiento vertical */
+    overflow-x: hidden;       /* Evita el desborde horizontal */
+    width: 100%;              /* Ajustado al ancho del contenedor */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Controlar el texto de las opciones individuales */
+.custom-dropdown-menu .dropdown-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Color destacado para la opción activa/seleccionada */
+.custom-dropdown-menu .dropdown-item.active {
+    background-color: #f0cb75; /* Tono amarillo/warning a juego con tu botón enviar */
+    color: #000;
+}
+
+/* ---- DISEÑO DE LA BARRA DE DESPLAZAMIENTO (SCROLLBAR) ---- */
+.custom-dropdown-menu::-webkit-scrollbar {
+    width: 8px; /* Grosor de la barra */
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Fondo del carril */
+    border-radius: 4px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #ffcc59; /* Color de la barra corrediza */
+    border-radius: 4px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #e0a800; /* Color al pasar el cursor */
+}
+
+/* Compatibilidad de scrollbar para Firefox */
+.custom-dropdown-menu {
+    scrollbar-width: thin;
+    scrollbar-color: #ffc107 #f1f1f1;
+}
