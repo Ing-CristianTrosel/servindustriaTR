@@ -208,6 +208,21 @@ use app\modelo\ModeloCliente;
             $this->validaciones->validarRechazarSolicitud($valor);
         }
     }
+
+    public function mostrarTrabajosCliente(){
+        $trabajos = $this->validaciones->validarMostrarTrabajosCliente($_SESSION['id_perfil']);
+        foreach($trabajos as $trabajo){
+            echo "
+                <tr>
+                    <td>".$trabajo['descripcion_asignacion']."</td>
+                    <td>".$trabajo['monto']."</td>
+                    <td>".$trabajo['fecha_inicio']."</td>
+                    <td>".$trabajo['fecha_finalizado']."</td>
+                    <td>".$trabajo['estado']."</td>
+                </tr>
+            ";
+        }
+    }
 }
 $cliente = new ControladorCliente();
 $cliente->inicio();

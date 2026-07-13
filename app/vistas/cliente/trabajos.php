@@ -143,14 +143,13 @@
 									<tr>
 										<th>Asignacion</th>
 										<th>Monto</th>
-										<th>Fecha</th>
-										<th>Referencia</th>
-										<th>Metodo</th>
-										<th>Acciones</th>
+										<th>Inicio</th>
+										<th>Terminado</th>
+										<th>estado</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php $cliente->mostrarPagos();?>								
+									<?php $cliente->mostrarTrabajosCliente(); ?>				
 								</tbody>
 							</table>
 						</div>

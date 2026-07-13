@@ -301,6 +301,16 @@ use DateTime;
                 ':id_coordinador' => $_SESSION['id_perfil']
             ]);
         }
+
+        public function mostrarTrabajosCliente(int $id_perfil){
+            $sql = "SELECT a.motivo AS descripcion_asignacion, a.monto_total_servicio AS monto, h.fecha_inicio, a.fecha_finalizado, CASE WHEN a.fecha_finalizado IS NOT NULL THEN 'Finalizado' WHEN a.fecha_rechazado IS NOT NULL THEN 'Rechazado' WHEN a.fecha_aprobado IS NOT NULL THEN 'En Progreso' ELSE 'Pendiente' END AS estado FROM asignaciones a LEFT JOIN horarios h ON a.id = h.id_asignacion WHERE a.id_cliente = :id_perfil AND a.deleted_at IS NULL;";
+            $consulta = $this->base->conexion->prepare($sql);
+            $consulta->execute([
+                ':id_perfil' => $id_perfil
+            ]);
+            return $trabajos = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
     }
 
 ?>

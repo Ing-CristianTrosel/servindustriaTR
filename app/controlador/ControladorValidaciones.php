@@ -225,4 +225,7 @@ use DateTime;
             header("location: inicio");
         }
 
+        public function validarMostrarTrabajosCliente(int $id_perfil){
+            return $solicitudes = $this->modeloCliente->mostrarTrabajosCliente($id_perfil);
+        }
     }
