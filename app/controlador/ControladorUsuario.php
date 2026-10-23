@@ -14,46 +14,38 @@
     }
 
     public function RegistrarUsuarioCliente(string $correo,string $contraseña){
-        if($this->validaciones->validarRegistroUsuario($correo,$contraseña) != true){
-            header("Location: registro");
-            exit();
-        }else{
-            header("Location: registro_perfil");
-            exit();
-        }
+        $this->validaciones->validarRegistro($correo,$contraseña);
+        
     }
 
     public function accederUsuario(string $correo,string $contraseña){
-        if($this->validaciones->validarAccesoUsuario($correo,$contraseña) != true){
-                
-            }else{
-                switch($_SESSION['id_rol']){
-                    case '1': 
-                        header("Location: cliente/inicio");
-                        exit();
-                    break;
-                    case '2': 
-                        header("Location: empleado/inicio");
-                        exit();
-                    break;
-                    case '3': 
-                        header("Location: coordinador/inicio");
-                        exit();
-                    break;
-                    case '4': 
-                        header("Location: jefe/inicio");
-                        exit();
-                    break;
-                    case '5': 
-                        header("Location: administrador/inicio");
-                        exit();
-                    break;
-                }
-            }
+        $this->validaciones->validarUsuario($correo,$contraseña);
+        switch(1){
+            case '1': 
+                header("Location: cliente/inicio");
+                exit();
+            break;
+            case '2': 
+                header("Location: empleado/inicio");
+                exit();
+            break;
+            case '3': 
+                header("Location: coordinador/inicio");
+                exit();
+            break;
+            case '4': 
+                header("Location: jefe/inicio");
+                exit();
+            break;
+            case '5': 
+                header("Location: administrador/inicio");
+                exit();
+            break;
+        }
     }
 
-    public function RegistrarPerfilCliente(string $nombre1,string $nombre2,string $apellido1,string $apellido2){
-        if ($this->validaciones->validarRegistroPerfil($nombre1,$nombre2,$apellido1,$apellido2) != true){
+    public function RegistrarPerfilCliente(string $nombre1,string $apellido1){
+        if ($this->validaciones->validarRegistroPerfil($nombre1,$apellido1) != true){
                 header("Location: registro_perfil");
                 exit();
             }else{

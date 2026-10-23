@@ -1,140 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <link rel="icon" type="image/png" href="publico/img/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384 img-fluid-sRIl4 img-fluidkxILFvY4 img-fluid7J16cr9ZwB07vP4 img-fluidJ8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="publico/css/inicio.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servindustria TR</title>
+    <link rel="stylesheet" href="publico/css/bootstrap.css">
+    <link rel="stylesheet" href="publico/css/estilos.css">
+    <title>ServindustriaTR</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg fondo fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand font-monospace fs-2 fw-bold text-light d-flex align-items-center" href="#">
-            <img class="d-inline-block align-text-top medida me-2" src="publico/img/logo.png" alt="Logo" width="47">
-            Servindustria TR
-        </a>
+    <header class="container-fluid d-flex flex-row justify-content-between align-items-center z-index">
+            <h1>Servindustria TR</h1>
+        <nav class="nav justify-content-end">
+            <a href="/servindustriaTR" class="nav-link">Inicio</a>
+            <a href="#informacion" class="nav-link">Informacion</a>
+            <a href="" class="nav-link">Servicios</a>
+            <a href="" class="nav-link">Contacto</a>
+        </nav>
+    </header>
+    <main class="shadow-lg py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <h2 class="col-6 texto-entrada my-5 px-5">
+                    Transforma <br> tus espacios a tu manera
+                </h2>
+                <div class="col-6 ">
+                    <picture class="d-flex justify-content-center h-75  my-3">
+                        <img class="img-fluid shadow rounded-circle p-1" src="publico/img/logo.png" alt="">
+                    </picture>
+                    <div class="nav justify-content-center ">
+                        <a href="registro" class="nav-link shadow px-5 py-3 my-3 mx-5 fs-20 boton registro">Registrarse</a>
+                        <a href="acceder" class="nav-link shadow px-5 py-3 my-3 mx-5 fs-20 boton">Acceder</a>
+                    </div>
+                </div>
+            </div>
 
-        <button class="hamburger-toggle" id="sidebar-toggle" type="button" 
-                data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-label="Abrir menú" aria-controls="navbarNav" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav nav-underline mx-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a href="#" class="nav-link link-light active">Inicio</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link link-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Información
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Electricidad</a></li>
-                        <li><a class="dropdown-item" href="#">Plomería</a></li>
-                        <li><a class="dropdown-item" href="#">Albañilería</a></li>
-                        <li><a class="dropdown-item" href="#">Carpintería</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Más</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="contacto" class="nav-link link-light">Contacto</a>
-                </li>
-            </ul>
-            
-            <ul class="navbar-nav nav-underline">
-                <li class="nav-item">
-                    <a href="registro" class="nav-link link-light">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a href="acceder" class="nav-link link-light">Acceder</a>
-                </li>
-            </ul>
         </div>
-    </div>
-</nav>
-    <section class="hero-section">
-        <div class="hero-grid">
-            <img src="publico/img/remodelacion.jpg" alt="Remodelación">
-            <img src="publico/img/cocina.jpg" alt="Cocina">
-            <img src="publico/img/electricidad.jpg" alt="Electricidad">
-            <div class="bg-dark-overlay d-flex justify-content-center align-items-center">
-                <span class="text-center link-light fw-bold h2">Transforma tu espacio <br> a <br> tu manera</span>
-            </div>
-        </div>
-    </section>
-    <main class="my-5">
-        <section class="hero my-5 py-5">
-            <div class="hero-card">
-                <img class="hero-image" src="publico/img/presentacion.jpg" alt="Electricista en poste">
-            </div>
-            <div class="hero-content">
-                <span class="section-title">¿Quienes somos?</span>
-                <h1>Nos distinguimos como líderes en el sector</h1>
-                <p>con una especialización en la obtención de los máximos resultados para su proyecto, negocio, vivienda y otros ámbitos.</p>
-                <p>Nos centramos en su:</p>
-                <ul>
-                    <li>Comodidad </li>
-                    <li>Satisfaccion.</li>
-                    <li>Bienestar</li>
-                    <li>Seguridad.</li>
-                </ul>
-                <p class="">Y garantizando los mejores resultados para sus expectativas.</p>
-            </div>
-        </section>
-
-        <section class="hero my-5">
-            <div class="hero-content">
-                <span class="section-title">Servicio</span>
-                <h1>Presentamos un equipo de personas orientadas y capacitadas</h1>
-                <p>Para todos los trabajos, ofreciendo seguridad, comodidad y eficiencia.</p>
-                <p>Contamos con un sistema de fácil interacción para el cliente que aporta una mejor experiencia al momento de:</p>
-                <ul>
-                    <li>Solicitar los servicios requeridos.</li>
-                    <li>Visualización completa de los trabajos y su progreso.</li>
-                    <li>Visualización de cuentas y monitoreo de pagos.</li>
-                </ul>
-                <p class="more">Y mucho más.</p>
-            </div>
-            <div class="hero-card">
-                <img class="hero-image" src="Publico/img/imagen-fondo.jpg" alt="Electricista en poste">
-            </div>
-        </section>
-  </main>
-      <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <div class="footer-avatar">
-            <img class="w-100" src="publico/img/logo.png" alt="">
-          </div>
-          <div>
-            <p class="footer-title">Servindustria TR</p>
-            <p class="footer-text">Soluciones profesionales en obras eléctricas y servicios de mantenimiento con atención inmediata y soporte confiable.</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer-grid">
-        <div class="footer-card">
-          <h3>Contacto</h3>
-          <p>Teléfono: 0412-738-87-18</p>
-          <p>Correo: ServindustriaTR@Gmail.com</p>
-          <p>Ubicación: Valencia, Venezuela</p>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2026 Servindustria TR. Todos los derechos reservados.</div>
-  </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384 img-fluid-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    </main>
+    
 </body>
 </html>

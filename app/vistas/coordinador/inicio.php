@@ -60,7 +60,7 @@
 						<div class="stat-label">Monto generado</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number">$5,000</div>
+						<div class="stat-number-r">$5,000</div>
 						<div class="stat-label">Monto Faltante</div>
 					</div>
 					<div class="stat-card">

@@ -18,18 +18,18 @@
 
     public function UsuarioIniciar_sesion(){
         require_once 'app/vistas/usuario/iniciar-sesion.html';
-        if ($_POST) {
+        if (isset($_POST['acceder'])) {
             $correo = $_POST['correo'];
-            $contraseña = $_POST['contraseña'];
+            $contraseña = $_POST['clave'];
             $this->usuario->accederUsuario($correo,$contraseña);
         }
     }
 
     public function UsuarioRegistro(){
         require_once 'app/vistas/usuario/registrarse.html';
-        if ($_POST) {
+        if (isset($_POST['registrar'])) {
             $correo = $_POST['correo'];
-            $contraseña = $_POST['contraseña'];
+            $contraseña = password_hash($_POST['clave'], PASSWORD_DEFAULT);
             $this->usuario->RegistrarUsuarioCliente($correo,$contraseña);
         }
     }

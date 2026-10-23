@@ -86,7 +86,7 @@
 						<div class="stat-label">Monto Pagados</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number">$<?php echo $cliente->montoFaltante;?></div>
+						<div class="stat-number-r">$<?php echo $cliente->montoFaltante;?></div>
 						<div class="stat-label">Monto Faltante</div>
 					</div>
 					<div class="stat-card">
@@ -94,7 +94,7 @@
 						<div class="stat-label">Trabajos Completados</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number"><?php echo $cliente->trabajosFaltantes;?></div>
+						<div class="stat-number-r"><?php echo $cliente->trabajosFaltantes;?></div>
 						<div class="stat-label">Trabajos Completados</div>
 					</div>
 				</div>

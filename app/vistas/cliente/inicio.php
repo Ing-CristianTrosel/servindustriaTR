@@ -1,5 +1,4 @@
-﻿<?php require_once 'app/controlador/Controlador_cliente/ControladorCliente.php';?>
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 	<head>
     	<link rel="icon" type="image/png" href="../publico/img/logo.png">
@@ -88,7 +87,7 @@
 						<div class="stat-label">Monto Pagados</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number">$<?php echo $cliente->montoFaltante;?></div>
+						<div class="stat-number-r">$<?php echo $cliente->montoFaltante;?></div>
 						<div class="stat-label">Monto Faltante</div>
 					</div>
 					<div class="stat-card">
@@ -96,7 +95,7 @@
 						<div class="stat-label">Trabajos Completados</div>
 					</div>
 					<div class="stat-card">
-						<div class="stat-number"><?php echo $cliente->trabajosFaltantes;?></div>
+						<div class="stat-number-r"><?php echo $cliente->trabajosFaltantes;?></div>
 						<div class="stat-label">Trabajos Completados</div>
 					</div>
 				</div>

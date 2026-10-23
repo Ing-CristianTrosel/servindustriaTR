@@ -1,0 +1,22 @@
+.texto-entrada{
+    font-size: 90px;
+}
+.bloque{
+    background-color: blue;
+}
+.boton{
+    box-shadow: inset;
+    border-radius: 50px;
+
+}
+.nav-link{
+    color: black;
+}
+.registro{
+    background-color: #2325a3;
+    color: white;
+}
+.registro:hover{
+    color: white;
+    background-color: #1a1c77;
+}

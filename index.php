@@ -1,5 +1,5 @@
 <?php
-ob_start();
+
 require_once __DIR__.'/autoload.php';
 
 use app\enrutador\Router;
@@ -8,24 +8,11 @@ $path = str_replace($raiz,'',ltrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PA
 
 
 $router = new Router();
-$router->agregar('/','ControladorVista','UsuarioInicio');
-$router->agregar('/registro','ControladorVista','UsuarioRegistro');
-$router->agregar('/acceder','ControladorVista','UsuarioIniciar_sesion');
-$router->agregar('/registro_perfil','ControladorVista','UsuarioRegistroPerfil');
-$router->agregar('/registro_direccion','ControladorVista','RegistroDireccion');
-$router->agregar('/cliente/inicio','ControladorVista','ClienteInicio');
-$router->agregar('/cliente/solicitudes','ControladorVista','ClienteSolicitudes');
-$router->agregar('/cliente/pagos','ControladorVista','ClientePagos');
-$router->agregar('/cliente/trabajos','ControladorVista','ClienteTrabajos');
-$router->agregar('/cliente/perfil','ControladorVista','ClientePerfil');
-$router->agregar('/cliente/carrito','ControladorVista','ClienteCarrito');
-$router->agregar('/cliente/salir','ControladorVista','ClienteSalir');
-$router->agregar('/empleado/inicio','ControladorVista','EmpleadoInicio');
-$router->agregar('/empleado/salir','ControladorVista','ClienteSalir');
-$router->agregar('/coordinador/inicio','ControladorVista','CoordinadorInicio');
-$router->agregar('/coordinador/salir','ControladorVista','ClienteSalir');
-$router->agregar('/jefe/inicio','ControladorVista','JefeInicio');
-$router->agregar('/administrador/inicio','ControladorVista','AdministradorInicio');
+$router->agregar('/','UsuarioInicio');
+$router->agregar('/acceder','UsuarioIniciar_sesion');
+$router->agregar('/registro','UsuarioRegistro');
+$router->agregar('/cliente/inicio','ClienteInicio');
+
+
 
 $router->dispatch($path);
-register_shutdown_function(function(){ if (ob_get_level()) ob_end_flush(); });

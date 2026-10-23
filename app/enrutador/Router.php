@@ -1,11 +1,13 @@
 <?php
 namespace app\enrutador;
 
+use app\controlador\ControladorVista;
+
 class Router {
     private array $routes = [];
 
-    public function agregar(string $path,string $clase , string $metodo): void {
-        $this->routes[$path] = [$clase,$metodo];
+    public function agregar(string $path, string $metodo): void {
+        $this->routes[$path] = [$metodo];
     }
 
     public function dispatch(string $path): void {
@@ -13,8 +15,8 @@ class Router {
             $handler = $this->routes[$path];
 
             if (is_array($handler)) {
-                [$clase, $metodo] = $handler;
-                    $clase = 'app\controlador\\'.$clase;
+                [$metodo] = $handler;
+                    $clase = 'app\controlador\ControladorVista';
                 if (class_exists($clase)) {
                     $instancia = new $clase();
 
