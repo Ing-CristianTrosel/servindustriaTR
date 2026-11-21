@@ -17,11 +17,13 @@ class ModeloSQL{
         'S-Correo' => 'SELECT `id` FROM `usuarios` WHERE `correo` = :correo',
         'V-Usuario' => 'SELECT `correo`, `clave` FROM `usuarios` WHERE `correo` = :correo ',
         'I-Usuario' => 'INSERT INTO `usuarios` (`correo`,`clave`) VALUES(:correo,:clave)',
+        'I-RolPerfilCliente' => 'INSERT INTO `perfil_cliente` (`fk_usuario`,`fK_rol`) VALUES ((SELECT `id` FROM `usuarios` WHERE `correo` = :correo) ,10)',
         ];
         $this->metodo = [
         'S-Correo' => [':correo' => ''],
         'V-Usuario' =>[':correo' =>''],
         'I-Usuario' =>[':correo' => '', ':clave' => ''],
+        'I-RolPerfilCliente' => [':correo' => ''],
         ];
     }
 

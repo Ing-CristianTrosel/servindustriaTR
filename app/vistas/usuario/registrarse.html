@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="publico/css/registro.css">
+    <title>ServindustriaTR</title>
 </head>
 <body>
-    <form action="registro" method="post">
-        <input type="text" name="correo">
-        <input type="password" name="clave">
-        <button type="submit" name="registrar">guardar</button>
-        <p>ya tienes cuenta <a href="acceder">acceder</a></p>
-    </form>
+    <div class="contenedor">
+        <form class="formulario" action="registro" method="post">
+            <h2 class="titulo">Registrarse</h2>
+            <div class="contenido">
+                <label>Correo electronico</label>
+                <input class="input" type="email" name="correo" required>
+            </div>
+            <div class="contenido">
+                <label>Contraseña</label>
+                <input class="input" type="password" name="clave" required>
+            </div>
+            <button class="enviar" type="submit" name="registrar">Registrar</button>
+            <p class="parrafo">Ya tienes cuenta: <a class="acceder" href="acceder">Acceder</a></p>
+            <a href="/servindustriaTR" class="volver">volver al inicio</a>
+        </form>
+    </div>
 </body>
 </html>

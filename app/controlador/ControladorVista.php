@@ -33,19 +33,9 @@
             $this->usuario->RegistrarUsuarioCliente($correo,$contraseña);
         }
     }
-    public function UsuarioRegistroPerfil(){
-        require_once 'app/vistas/usuario/registroPerfil.html';
-        if ($_POST) {
-            $nombre1 = $_POST['nombre1'];
-            $nombre2 = $_POST['nombre2'];
-            $apellido1 = $_POST['apellido1'];
-            $apellido2 = $_POST['apellido2'];
-            $this->usuario->RegistrarPerfilCliente($nombre1,$nombre2,$apellido1,$apellido2);
-        }
-    }
 
     public function ClienteInicio(){
-        require_once 'app/vistas/cliente/inicio.php';
+        require_once 'app/vistas/cliente/inicio.html';
     }
     public function ClienteSolicitudes(){
         require_once 'app/vistas/cliente/solicitudes.php';

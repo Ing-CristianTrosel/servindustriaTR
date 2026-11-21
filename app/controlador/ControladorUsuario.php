@@ -15,7 +15,6 @@
 
     public function RegistrarUsuarioCliente(string $correo,string $contraseña){
         $this->validaciones->validarRegistro($correo,$contraseña);
-        
     }
 
     public function accederUsuario(string $correo,string $contraseña){
@@ -44,15 +43,7 @@
         }
     }
 
-    public function RegistrarPerfilCliente(string $nombre1,string $apellido1){
-        if ($this->validaciones->validarRegistroPerfil($nombre1,$apellido1) != true){
-                header("Location: registro_perfil");
-                exit();
-            }else{
-                header("Location: acceder");
-                exit();
-            }
-    }
+    
 
     public function salir(){
         session_destroy();

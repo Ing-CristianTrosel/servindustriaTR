@@ -11,6 +11,7 @@ class Inserciones{
     public function insertarUsuario(string $correo,string $clave){
         $this->cliente->valor = [':correo' => $correo, ':clave' => $clave];
         $this->cliente->consulta('I-Usuario','');
+        $this->cliente->consulta('I-RolPerfilCliente','');
         header("Location: acceder");
         exit();
     }

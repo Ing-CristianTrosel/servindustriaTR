@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="publico/css/acceder.css">
+    <title>ServindustriaTR</title>
 </head>
 <body>
-    <form action="acceder" method="post">
-        <input type="email" name="correo">
-        <input type="password" name="clave">
-        <button type="submit" name="acceder">Acceder</button>
-    </form>
-    <p> No tienes cuenta? <a href="registro">Registarse</a></p>
+    <div class="contenedor">
+        <form class="formulario" action="acceder" method="post">
+            <h2 class="titulo">Acceder</h2>
+            <div class="contenido">
+                <label>Correo electronico</label>
+                <input class="input" type="email" name="correo" required>
+            </div>
+            <div class="contenido">
+                <label>Contraseña</label>
+                <input class="input" type="password" name="clave" required>
+            </div>
+            <button class="enviar" type="submit" name="acceder">Acceder</button>
+            <p class="parrafo">No tienes cuenta?: <a class="acceder" href="registro">registrarse</a></p>
+            <a href="/servindustriaTR" class="volver">volver al inicio</a>
+        </form>
+    </div>
 </body>
 </html>

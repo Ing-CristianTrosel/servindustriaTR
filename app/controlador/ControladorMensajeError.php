@@ -8,9 +8,8 @@ class controladorMensajeError{
     function __construct()
     {
         $this->mensajes =[
-            'acceder' => 'acceso denegado',
+            'acceder' => 'Usuario o contraseña incorrectos',
             'registro' => 'Usuario ya utilizado',
-
         ];
     }
 
